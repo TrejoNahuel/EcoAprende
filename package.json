@@ -1,0 +1,8 @@
+{
+  "name": "ecoaprende-entorno-global",
+  "version": "1.0.0",
+  "description": "Instalador centralizado para el equipo xAcademy (Frontend y Backend)",
+  "scripts": {
+    "instalar-todo": "npm install -g @angular/cli@18 @nestjs/cli@11 && npm install --prefix frontend && npm install --prefix backend"
+  }
+}
