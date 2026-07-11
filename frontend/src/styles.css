@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: auto;
+    font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+:root{
+    --primary-color: #046a38;
+    --tertiary-color: #0b548b;
+    --shadow-color-text: #4a5568; 
+    --shadow-color-bg: #d8d7d7;
+    --shadow-icon-color: #94a3b8;
+    --primary-color-hover: #1c6e53;
+    --primary-color-bg: #e5f8eb;
+}

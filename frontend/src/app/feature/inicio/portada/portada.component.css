@@ -1,0 +1,59 @@
+/* Contenedor Principal (aplica el fondo verde claro degradado) */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  padding: 40px 20px;
+  background: var(--primary-color-bg);
+}
+
+/* El cuadro blanco redondeado del icono */
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+/* El icono de la hoja */
+.icon-badge i {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+}
+
+/* Bloque de Textos */
+.text-content {
+  max-width: 500px;
+}
+
+/* Título Principal */
+.text-content h1 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+/* Párrafos */
+.text-content p {
+  color: var(--shadow-color-text);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Forzar el salto de línea del segundo enunciado manteniendo el formato */
+.block-text {
+  display: block;
+  margin-top: 4px;
+}
