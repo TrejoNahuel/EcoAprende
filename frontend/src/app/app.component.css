@@ -1,18 +1,32 @@
-/* Contenedor principal que divide la pantalla en dos */
-.portada-container {
+.contenedor-principal {
     display: flex;
-    gap: 16px;
-}
-.portada-container > *{
-    flex: 1;
+    height: 100vh;
 }
 
-.app-tap-layout {
-    padding: 1%;
+.lado-izquierdo,
+.lado-derecho {
+    flex: 1;
+    overflow: hidden;
 }
-/* --- Media Query para Pantallas Grandes (Escritorio) --- */
-@media (min-width: 992px) {
-    .portada-container {
-      grid-template-columns: 1fr 1fr; /* Se divide exactamente a la mitad */
+
+.lado-derecho app-portada,
+.lado-izquierdo app-tab-layout {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .contenedor-principal {
+      flex-direction: column;
+      height: auto;
+      min-height: 100vh;
+    }
+  
+    .lado-izquierdo,
+    .lado-derecho {
+      flex: none;
+      width: 100%;
+      height: auto;
     }
 }

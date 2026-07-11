@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TapLayoutComponent } from './tap-layout.component';
+import { TabLayoutComponent } from './tab-layout.component';
 
-describe('TapLayoutComponent', () => {
-  let component: TapLayoutComponent;
-  let fixture: ComponentFixture<TapLayoutComponent>;
+describe('TabLayoutComponent', () => {
+  let component: TabLayoutComponent;
+  let fixture: ComponentFixture<TabLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TapLayoutComponent]
+      imports: [TabLayoutComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TapLayoutComponent);
+    fixture = TestBed.createComponent(TabLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

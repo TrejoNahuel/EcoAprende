@@ -2,20 +2,20 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormLoginComponent } from '../form-login/form-login.component';
 
-export type AuthTap = 'login' | 'register';
+export type AuthTab = 'login' | 'register';
 
 @Component({
-  selector: 'app-tap-layout',
+  selector: 'app-tab-layout',
   standalone: true,
   imports: [CommonModule, FormLoginComponent],
-  templateUrl: './tap-layout.component.html',
-  styleUrl: './tap-layout.component.css'
+  templateUrl: './tab-layout.component.html',
+  styleUrl: './tab-layout.component.css'
 })
-export class TapLayoutComponent {
+export class TabLayoutComponent {
 
-  activeTab: AuthTap = 'login';
+  activeTab: AuthTab = 'login';
 
-  setActiveTab(tab: AuthTap): void{
+  setActiveTab(tab: AuthTab): void{
     this.activeTab = tab;
   }
 }

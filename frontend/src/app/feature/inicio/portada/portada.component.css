@@ -6,6 +6,7 @@
   justify-content: center;
   text-align: center;
   width: auto;
+  height: 100vh;
   padding: 40px 20px;
   background: var(--primary-color-bg);
 }
