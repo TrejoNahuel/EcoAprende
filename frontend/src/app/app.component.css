@@ -1,0 +1,18 @@
+/* Contenedor principal que divide la pantalla en dos */
+.portada-container {
+    display: flex;
+    gap: 16px;
+}
+.portada-container > *{
+    flex: 1;
+}
+
+.app-tap-layout {
+    padding: 1%;
+}
+/* --- Media Query para Pantallas Grandes (Escritorio) --- */
+@media (min-width: 992px) {
+    .portada-container {
+      grid-template-columns: 1fr 1fr; /* Se divide exactamente a la mitad */
+    }
+}
