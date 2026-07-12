@@ -11,16 +11,16 @@
         <p class="form-label text-uppercase">¿Cuál es tu rol?</p>
         <div class="role-selector">
           
-          <!-- Opción Estudiante Activa -->
-          <button type="button" class="role-option" [class.active]="selectedRole === 'estudiante'" (click)="selectRole('estudiante')">
+          <!-- Option student active -->
+          <button type="button" class="role-option" [class.active]="selectedRole === 'student'" (click)="selectRole('student')">
             <div class="role-icon-container">
               <i class="fa-solid fa-user-graduate"></i>
             </div>
             <span>Soy Estudiante</span>
           </button>
           
-          <!-- Opción Docente Inactiva -->
-          <button type="button" class="role-option" [class.active]="selectedRole === 'docente'" (click)="selectRole('docente')">
+          <!-- Option teacher unactive -->
+          <button type="button" class="role-option" [class.active]="selectedRole === 'teacher'" (click)="selectRole('teacher')">
           <div class="role-icon-container">
             <i class="fa-solid fa-user-gear"></i>
           </div>
@@ -51,7 +51,9 @@
           <small>La contraseña es obligatoria</small>
         } @else if (password?.errors?.['minlength']) {
           <small>Mínimo 8 caracteres</small>
-        }        
+        } @else if (password?.errors?.['pattern']){
+          <small>Debe tener 1 mayúscula, 1 minúscula y 1 número</small>
+        }      
       }
       
       <button class="btn-passwd" type="button">¿Olvidaste tu contraseña?</button>
