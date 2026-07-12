@@ -74,6 +74,26 @@
   color: var(--tertiary-color);
 }
 
+.error-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  color: var(--error-color);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+small{
+  color: var(--error-color);
+  margin: 0;
+  text-align: end;
+  transform: translateY(-10px);
+}
 /* --- ESTADO ACTIVO (Estudiante) --- */
 .role-option.active {
   background-color: var(--primary-color-bg);

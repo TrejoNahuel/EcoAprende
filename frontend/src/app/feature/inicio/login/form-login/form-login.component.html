@@ -1,43 +1,62 @@
 <div class="auth-wrapper">
   <div class="login-card">
-    <form  class="form-container"> 
+    @if(errorMessage){
+      <div class="error-alert">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>{{ errorMessage }}</span>
+      </div>
+    }
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container"> 
       <div class="role-group">
         <p class="form-label text-uppercase">¿Cuál es tu rol?</p>
         <div class="role-selector">
           
           <!-- Opción Estudiante Activa -->
-          <div class="role-option" [class.active]="selectedRole === 'estudiante'" (click)="selectRole('estudiante')">
+          <button type="button" class="role-option" [class.active]="selectedRole === 'estudiante'" (click)="selectRole('estudiante')">
             <div class="role-icon-container">
               <i class="fa-solid fa-user-graduate"></i>
             </div>
             <span>Soy Estudiante</span>
-          </div>
+          </button>
           
           <!-- Opción Docente Inactiva -->
-          <div class="role-option" [class.active]="selectedRole === 'docente'" (click)="selectRole('docente')">
+          <button type="button" class="role-option" [class.active]="selectedRole === 'docente'" (click)="selectRole('docente')">
           <div class="role-icon-container">
             <i class="fa-solid fa-user-gear"></i>
           </div>
           <span>Soy Docente</span>
-        </div>
+        </button>
           
         </div>
       </div>
 
       <div class="input-group">
-          <i class="fa-solid fa-envelope input-icon"></i>
-        <input 
-          type="email" formControlName="email" placeholder="Correo electrónico">
+        <i class="fa-solid fa-envelope input-icon"></i>
+        <input type="email"  formControlName="email" placeholder="Correo electrónico">
       </div>
+      @if (email?.touched && email?.invalid) {
+        @if (email?.errors?.['required']) {
+          <small>El email es obligatorio</small>
+        } @else if (email?.errors?.['email']) {
+          <small>Formato de email inválido</small>
+        }
+      }
         
       <div class="input-group">
         <i class="fa-solid fa-lock input-icon"></i>
-        <input 
-          type="password" formControlName="password" placeholder="Contraseña">
+        <input type="password" formControlName="password" placeholder="Contraseña" >        
       </div>
-      <button class="btn-passwd" type="button" >¿Olvidaste tu contraseña?</button>
+      @if (password?.touched && password?.invalid) {
+        @if (password?.errors?.['required']) {
+          <small>La contraseña es obligatoria</small>
+        } @else if (password?.errors?.['minlength']) {
+          <small>Mínimo 8 caracteres</small>
+        }        
+      }
       
-      <button class="btn-login" type="submit">Acceder a mi Cuenta</button>
+      <button class="btn-passwd" type="button">¿Olvidaste tu contraseña?</button>
+      
+      <button class="btn-login" type="submit" [disabled]="loginForm.invalid">Acceder a mi Cuenta</button>
     </form>
   </div>
 </div>
