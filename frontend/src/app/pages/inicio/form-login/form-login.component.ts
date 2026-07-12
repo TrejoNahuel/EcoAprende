@@ -31,7 +31,7 @@ export class FormLoginComponent {
 
     if(this.loginForm.valid){
       console.log(`${email} - ${password} - ${rol}`);
-      this.router.navigate(['']);
+      this.router.navigate(['/home']);
     }
   }
 
