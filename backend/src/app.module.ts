@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CryptoModule } from './crypto/crypto.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { AppService } from './app.service';
       autoLoadModels: true,
       synchronize: true,
     }),
+    CryptoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
