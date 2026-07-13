@@ -6,7 +6,7 @@ export enum UserRole {
   TEACHER = 'teacher',
 }
 
-export class CreateUserDto {
+export class RegisterUserDto {
   @IsString({ message: 'El email debe ser una cadena de texto.' })
   @IsEmail({}, { message: 'El correo electrónico no tiene un formato válido.' })
   @IsNotEmpty({ message: 'El correo electrónico es obligatorio.' })
