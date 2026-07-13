@@ -14,6 +14,7 @@ export class FormLoginComponent {
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
   errorMessage = '';
+  showPassword = false;
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -22,6 +23,10 @@ export class FormLoginComponent {
 
   selectRole(role: 'student' | 'teacher'): void {
     this.selectedRole = role;
+  }
+
+  statePassword(){
+    this.showPassword = !this.showPassword;
   }
 
   onSubmit(){

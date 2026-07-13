@@ -9,8 +9,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container"> 
       <div class="role-group">
         <p class="form-label text-uppercase">¿Cuál es tu rol?</p>
-        <div class="role-selector">
-          
+        <div class="role-selector">      
           <!-- Option student active -->
           <button type="button" class="role-option" [class.active]="selectedRole === 'student'" (click)="selectRole('student')">
             <div class="role-icon-container">
@@ -21,12 +20,11 @@
           
           <!-- Option teacher unactive -->
           <button type="button" class="role-option" [class.active]="selectedRole === 'teacher'" (click)="selectRole('teacher')">
-          <div class="role-icon-container">
-            <i class="fa-solid fa-user-gear"></i>
-          </div>
-          <span>Soy Docente</span>
-        </button>
-          
+            <div class="role-icon-container">
+              <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <span>Soy Docente</span>
+          </button>
         </div>
       </div>
 
@@ -36,15 +34,16 @@
       </div>
       @if (email?.touched && email?.invalid) {
         @if (email?.errors?.['required']) {
-          <small>El email es obligatorio</small>
+          <small>El Correo es obligatorio</small>
         } @else if (email?.errors?.['email']) {
-          <small>Formato de email inválido</small>
+          <small>Formato de correo inválido</small>
         }
       }
         
       <div class="input-group">
         <i class="fa-solid fa-lock input-icon"></i>
-        <input type="password" formControlName="password" placeholder="Contraseña" >        
+        <input [type]="showPassword? 'text':'password'" formControlName="password" placeholder="Contraseña" >     
+        <button type="button" class="show-icon fa" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword" (click)="statePassword()"></button>   
       </div>
       @if (password?.touched && password?.invalid) {
         @if (password?.errors?.['required']) {
