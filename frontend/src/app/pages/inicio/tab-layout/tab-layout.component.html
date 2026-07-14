@@ -1,0 +1,29 @@
+<div class="tab-container">
+    <!-- Pestaña Iniciar Sesión -->
+    <button 
+      class="tab-button" 
+      [ngClass]="{ 'active': activeTab === 'login' }"
+      (click)="setActiveTab('login')">
+      Iniciar Sesión
+    </button>
+  
+    <!-- Pestaña Registrarse -->
+    <button 
+      class="tab-button" 
+      [ngClass]="{ 'active': activeTab === 'register' }"
+      (click)="setActiveTab('register')">
+      Registrarse
+    </button>
+</div>  
+<div>
+    @if (activeTab === 'login'){
+        <div>
+            <app-form-login />
+        </div>
+    }
+    @if (activeTab === 'register'){
+        <div>
+            <app-form-register />
+        </div>
+    }
+</div>

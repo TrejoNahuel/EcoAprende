@@ -1,0 +1,64 @@
+<div class="auth-wrapper">
+    <div class="register-card">
+      @if(message){
+        <div class="error-alert">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span>{{ message }}</span>
+        </div>
+      }
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container"> 
+        <div class="input-group">
+            <input type="name"  formControlName="name" placeholder="Nombre/s">
+        </div>
+        @if (name?.touched && name?.invalid) {
+            @if (name?.errors?.['required']) {
+              <small>El nombre es obligatorio</small>
+            } 
+        }
+
+        <div class="input-group">            
+            <input type="lastname"  formControlName="lastname" placeholder="Apellido/s">
+        </div>
+        @if (lastname?.touched && lastname?.invalid) {
+            @if (lastname?.errors?.['required']) {
+              <small>Los apellidos son obligatorios</small>
+            } 
+          }
+
+        <div class="input-group">          
+          <input type="email"  formControlName="email" placeholder="Correo electrónico">
+        </div>
+        @if (email?.touched && email?.invalid) {
+          @if (email?.errors?.['required']) {
+            <small>El correo es obligatorio</small>
+          } @else if (email?.errors?.['email']) {
+            <small>Formato de correo inválido</small>
+          }
+        }
+          
+        <div class="input-group">          
+            <input [type]="showPassword? 'text':'password'" formControlName="password" placeholder="Contraseña" >     
+            <button type="button" class="show-icon fa" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword" (click)="statePassword()"></button>         
+        </div>
+        @if (password?.touched && password?.invalid) {
+          @if (password?.errors?.['required']) {
+            <small>La contraseña es obligatoria</small>
+          } @else if (password?.errors?.['minlength']) {
+            <small>Mínimo 8 caracteres</small>
+          } @else if (password?.errors?.['pattern']){
+            <small>Debe tener 1 mayúscula, 1 minúscula y 1 número</small>
+          }      
+        }
+
+        <div class="input-group">
+            <select name="role" id="role" formControlName="role">
+                <option value="" disabled>Elige un rol</option>
+                <option value="student">Estudiante</option>
+                <option value="teacher">Profesor</option>
+            </select>
+        </div>
+        
+        <button class="btn-register" type="submit" [disabled]="registerForm.invalid">Crear mi Cuenta</button>
+      </form>
+    </div>
+  </div>

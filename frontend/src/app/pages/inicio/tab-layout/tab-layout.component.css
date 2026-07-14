@@ -1,0 +1,33 @@
+.tab-container {
+    display: flex;
+    border-bottom: 1px solid var(--shadow-color-text);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+}
+
+.tab-button:hover {
+    color: var(--shadow-color-text);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.tab-button:focus {
+    outline: none;
+}

@@ -1,0 +1,181 @@
+.auth-wrapper {
+  display: flex;
+  min-height: 80vh;
+}
+
+.login-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.role-group {
+  margin: 0;
+}
+
+/* --- Selector de Roles --- */
+.role-selector {
+  display: flex;
+  gap: 16px;
+}
+
+/* Etiquetas */
+.form-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #3f4e42;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.role-option {
+  flex: 1;
+  background-color: #f3f5f3;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* El texto dentro de las opciones */
+.role-option span {
+  color: var(--tertiary-color);
+  font-weight: bold;
+  font-size: small;
+}
+
+/* Contenedor circular blanco del icono */
+.role-icon-container {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.role-icon-container i {
+  font-size: 1.3rem;
+  color: var(--tertiary-color);
+}
+
+.error-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  color: var(--error-color);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+small{
+  color: var(--error-color);
+  margin: 0;
+  text-align: end;
+  transform: translateY(-10px);
+}
+/* --- ESTADO ACTIVO (Estudiante) --- */
+.role-option.active {
+  background-color: var(--primary-color-bg);
+  border-color: var(--primary-color);
+}
+
+.role-option.active span {
+  color: var(--primary-color);
+}
+
+.role-option.active .role-icon-container i {
+  color: var(--primary-color);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--shadow-icon-color);
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+.show-icon{
+  position: absolute;
+  right: 1rem;
+  color: var(--shadow-icon-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  border: none;
+  background: none;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--shadow-color-bg);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: var(--shadow-color-bg);
+  transition: all 0.2s ease;
+  outline: none;
+}
+input:focus {
+  border: 1px solid var(--primary-color);
+}
+
+.btn-login {
+  padding: 0.75rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-login:hover {
+    background-color: var(--primary-color-hover);
+} 
+
+.btn-passwd {
+  background: none;
+  border: none;
+  margin: 0;
+  text-align: end;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+.btn-passwd:hover {
+    text-decoration: underline;
+}
