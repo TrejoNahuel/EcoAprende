@@ -1,11 +1,11 @@
-import type { CreationOptional } from 'sequelize';
+import type { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table({
   tableName: 'users',
   timestamps: false,
 })
-export class User extends Model<User> {
+export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   @Column({
     primaryKey: true,
     autoIncrement: true,
@@ -22,11 +22,11 @@ export class User extends Model<User> {
   @Column({
     allowNull: false,
   })
-  password: string;
+  declare password: string;
 
   @Column({
     type: DataType.ENUM('student', 'teacher', 'admin'),
     allowNull: false,
   })
-  role: string;
+  declare role: 'student' | 'teacher' | 'admin';
 }
