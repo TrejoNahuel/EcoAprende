@@ -14,7 +14,7 @@ export class UsersService {
     return this.userModel.findOne({ where: { email } });
   }
 
-  create(createUserDto: CreateUserDto): Promise<User> {
-    return this.userModel.create(createUserDto);
+  create(dto: CreateUserDto): Promise<User> {
+    return this.userModel.create(dto);
   }
 }
