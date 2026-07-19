@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-form-register',
@@ -10,6 +12,9 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class FormRegisterComponent {
   private readonly fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+
   showPassword = false;
   message = '';
 
@@ -26,16 +31,28 @@ export class FormRegisterComponent {
   }
 
   onSubmit(){
-    console.log('active');
-    let name = this.registerForm.value.name;
-    let lastname = this.registerForm.value.lastname;
-    let email = this.registerForm.value.email;
-    let password = this.registerForm.value.password;
-    let role = this.registerForm.value.role;
+    if (this.registerForm.invalid) return;
 
-    if(this.registerForm.valid){
-      console.log(`${name} - ${lastname} - ${email} - ${password} - ${role}`);
-    }
+    this.message = '';
+
+    const userData = {
+      email: this.registerForm.value.email!,
+      contrasena: this.registerForm.value.password!,
+      rol: this.registerForm.value.role!
+    };
+
+    this.authService.register(userData).subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        if (err.status === 409) {
+          this.message = 'Ese correo ya está registrado.';
+        } else {
+          this.message = 'Ocurrió un error al registrarte. Intentá nuevamente.';
+        }
+      }
+    });
   }
 
   get email(){return this.registerForm.get('email');}
