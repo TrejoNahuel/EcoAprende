@@ -1,8 +1,4 @@
-export enum UserRole {
-  ADMIN = 'admin',
-  STUDENT = 'student',
-  TEACHER = 'teacher',
-}
+import type { UserRole } from "../types/user-rol.types";
 
 export class CreateUserDto {
   email: string;

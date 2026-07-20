@@ -1,5 +1,6 @@
 import type { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { UserRole } from '../types/user-rol.types';
 
 @Table({
   tableName: 'users',
@@ -25,8 +26,8 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare password: string;
 
   @Column({
-    type: DataType.ENUM('student', 'teacher', 'admin'),
+    type: DataType.ENUM(...Object.values(UserRole)),
     allowNull: false,
   })
-  declare role: 'student' | 'teacher' | 'admin';
+  declare role: UserRole;
 }
