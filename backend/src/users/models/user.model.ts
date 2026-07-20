@@ -18,7 +18,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
     unique: true,
     allowNull: false,
   })
-  email: string;
+  declare email: string;
 
   @Column({
     allowNull: false,
