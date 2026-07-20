@@ -1,5 +1,10 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
-import { UserRole } from '../../users/types/user-rol.types';
+
+export enum UserRole {
+  ADMIN = 'admin',
+  STUDENT = 'student',
+  TEACHER = 'teacher',
+}
 
 export class RegisterUserDto {
   @IsString({ message: 'El email debe ser una cadena de texto.' })
