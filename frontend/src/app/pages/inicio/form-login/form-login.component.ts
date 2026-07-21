@@ -10,7 +10,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './form-login.component.css'
 })
 export class FormLoginComponent {
-  selectedRole: 'student' | 'teacher' = 'student';
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
   errorMessage = '';
@@ -21,10 +20,6 @@ export class FormLoginComponent {
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)]]
   })
 
-  selectRole(role: 'student' | 'teacher'): void {
-    this.selectedRole = role;
-  }
-
   statePassword(){
     this.showPassword = !this.showPassword;
   }
@@ -32,14 +27,13 @@ export class FormLoginComponent {
   onSubmit(){
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
-    let role = this.selectedRole;
 
     if(this.loginForm.valid){
-      console.log(`${email} - ${password} - ${role}`);
+      console.log(`${email} - ${password}`);
       this.router.navigate(['/home']);
     }
   }
 
-  get email(){return this.loginForm.get('email');}
-  get password(){return this.loginForm.get('password');}
+  get email() { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
 }

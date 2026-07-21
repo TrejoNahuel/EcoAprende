@@ -51,7 +51,7 @@ small{
     transform: translateY(-10px);
 }
 
-input, select {
+input {
     width: 100%;
     padding: 0.75rem 1rem 0.75rem 1rem;
     border: 1px solid var(--shadow-color-bg);
@@ -60,6 +60,78 @@ input, select {
     background-color: var(--shadow-color-bg);
     transition: all 0.2s ease;
     outline: none;
+}
+
+.role-group {
+    margin: 0;
+}
+
+.role-selector {
+    display: flex;
+    gap: 16px;
+}
+
+.form-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #3f4e42;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role-option {
+    flex: 1;
+    background-color: #f3f5f3;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 24px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.role-option span {
+    color: var(--tertiary-color);
+    font-weight: bold;
+    font-size: small;
+}
+
+.role-icon-container {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.role-icon-container i {
+    font-size: 1.3rem;
+    color: var(--tertiary-color);
+}
+
+.role-option.active {
+    background-color: var(--primary-color-bg);
+    border-color: var(--primary-color);
+}
+
+.role-option.active span {
+    color: var(--primary-color);
+}
+
+.role-option.active .role-icon-container i {
+    color: var(--primary-color);
 }
 
 input:focus {

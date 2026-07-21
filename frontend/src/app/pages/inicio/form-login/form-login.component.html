@@ -7,27 +7,6 @@
       </div>
     }
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container"> 
-      <div class="role-group">
-        <p class="form-label text-uppercase">¿Cuál es tu rol?</p>
-        <div class="role-selector">      
-          <!-- Option student active -->
-          <button type="button" class="role-option" [class.active]="selectedRole === 'student'" (click)="selectRole('student')">
-            <div class="role-icon-container">
-              <i class="fa-solid fa-user-graduate"></i>
-            </div>
-            <span>Soy Estudiante</span>
-          </button>
-          
-          <!-- Option teacher unactive -->
-          <button type="button" class="role-option" [class.active]="selectedRole === 'teacher'" (click)="selectRole('teacher')">
-            <div class="role-icon-container">
-              <i class="fa-solid fa-user-gear"></i>
-            </div>
-            <span>Soy Docente</span>
-          </button>
-        </div>
-      </div>
-
       <div class="input-group">
         <i class="fa-solid fa-envelope input-icon"></i>
         <input type="email"  formControlName="email" placeholder="Correo electrónico">
