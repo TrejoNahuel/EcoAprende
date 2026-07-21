@@ -26,17 +26,32 @@
   text-align: center;
 }
 
-small{
+small {
   color: var(--error-color);
   margin: 0;
   text-align: end;
-  transform: translateY(-10px);
+  margin-top: calc(1.25rem - 10px);
 }
+
 .form-container {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   width: 100%;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.form-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #3f4e42;
+    margin-bottom: 10px;
+    margin-left: 0;
 }
 
 .input-group {
