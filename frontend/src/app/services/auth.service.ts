@@ -3,18 +3,37 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
+export type UserRole = 'student' | 'admin' | 'teacher';
+
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  role: UserRole;
+}
+
+export interface RegisterResponse {
+  accessToken: string;
+  user: {
+    id: number;
+    email: string;
+    role: UserRole;
+  };
+}
+
+// 👇 1. ESTO ES LO QUE TE PEDÍA ANGULAR (@Injectable)
 @Injectable({
   providedIn: 'root'
 })
+// 👇 2. AQUÍ DEBE DECIR "class", NO "interface"
 export class AuthService {
-  // Trae la URL base desde el environment
   private apiUrl = environment.apiUrl;
 
-  // Inyectamos el HttpClient
   constructor(private http: HttpClient) { }
 
-  // Método que recibe los datos y hace el POST al backend
-  register(userData: { email: string, contrasena: string, rol: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/register`, userData);
+  register(userData: RegisterRequest): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(
+      `${this.apiUrl}/auth/register`,
+      userData
+    );
   }
 }
