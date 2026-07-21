@@ -37,6 +37,13 @@ export class FormLoginComponent {
     if(this.loginForm.valid){
       console.log(`${email} - ${password} - ${role}`);
       this.router.navigate(['/home']);
+      /**
+       *  if(this.authService.getUserRole() === 'student'){
+            this.router.navigate(['/home-student']);
+          }else{
+            this.router.navigate(['/home-teacher']);
+          }
+      */
     }
   }
 

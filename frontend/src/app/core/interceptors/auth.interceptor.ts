@@ -2,10 +2,12 @@ import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
 import { inject } from "@angular/core";
 import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
+    const authService = inject(AuthService);
     const router = inject(Router);
-    const token = 'tokendeprueba'
+    const token = authService.getToken();
     
     if (req.url.includes('')){
         return next(req);

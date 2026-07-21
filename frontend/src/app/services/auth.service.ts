@@ -27,6 +27,8 @@ export interface RegisterResponse {
 // 👇 2. AQUÍ DEBE DECIR "class", NO "interface"
 export class AuthService {
   private apiUrl = environment.apiUrl;
+  private readonly token = '';
+  private readonly userRole = '';
 
   constructor(private http: HttpClient) { }
 
@@ -35,5 +37,13 @@ export class AuthService {
       `${this.apiUrl}/auth/register`,
       userData
     );
+  }
+
+  getToken(): string | null {
+    return this.token;
+  }
+
+  getUserRole(): string | null{
+    return this.userRole;
   }
 }
