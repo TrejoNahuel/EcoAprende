@@ -37,8 +37,8 @@ export class FormRegisterComponent {
 
     const userData = {
       email: this.registerForm.value.email!,
-      contrasena: this.registerForm.value.password!,
-      rol: this.registerForm.value.role!
+      password: this.registerForm.value.password!,
+      role: this.registerForm.value.role!
     };
 
     this.authService.register(userData).subscribe({
