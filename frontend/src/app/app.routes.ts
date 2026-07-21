@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { FormLoginComponent } from './pages/inicio/form-login/form-login.component';
 
 export const routes: Routes = [
     {path: '', component: AuthLayoutComponent},
-    {path: 'home', component: HomeComponent}
+    {path: 'home', component: HomeComponent},
+    {path: 'login', component: FormLoginComponent}
 ];
