@@ -1,29 +1,24 @@
 <div class="tab-container">
     <!-- Pestaña Iniciar Sesión -->
     <button 
-      class="tab-button" 
-      [ngClass]="{ 'active': activeTab === 'login' }"
-      (click)="setActiveTab('login')">
+      class="tab-button"
+      routerLink="/login"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       Iniciar Sesión
     </button>
   
     <!-- Pestaña Registrarse -->
     <button 
-      class="tab-button" 
-      [ngClass]="{ 'active': activeTab === 'register' }"
-      (click)="setActiveTab('register')">
+      class="tab-button"
+      routerLink="/register"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       Registrarse
     </button>
-</div>  
+</div>
 <div>
-    @if (activeTab === 'login'){
-        <div>
-            <app-form-login />
-        </div>
-    }
-    @if (activeTab === 'register'){
-        <div>
-            <app-form-register />
-        </div>
-    }
+  <ng-content />
 </div>
