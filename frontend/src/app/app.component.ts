@@ -12,9 +12,11 @@ export class AppComponent {
   title = 'frontend';
 }   Version vieja */
 
-// Version de prueba del t013
+// Version de prueba
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
+// 1. Agregamos RegisterRequest a la importación
+import { AuthService, RegisterRequest } from './services/auth.service'; 
+
 
 @Component({
   selector: 'app-root',
@@ -28,14 +30,14 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   constructor(private authService: AuthService) {}
-
   probarRegistro() {
     console.log('Enviando datos al backend...');
     
-    const datosPrueba = {
+    // 2. Le decimos a TypeScript que esto es un RegisterRequest
+    const datosPrueba: RegisterRequest = { 
       email: 'test@ecoaprende.com',
-      contrasena: '123456',
-      rol: 'Estudiante'
+      password: '123456',
+      role: 'student' 
     };
 
     this.authService.register(datosPrueba).subscribe({
