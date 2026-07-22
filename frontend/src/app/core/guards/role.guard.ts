@@ -11,7 +11,7 @@ export const RoleGuard: CanActivateFn = (route, state) => {
     if (userRole === expectedRole){
         return true;
     } else {
-        router.navigate(['/']);
+        router.navigate(['/login']);
         return false;
     }
 
