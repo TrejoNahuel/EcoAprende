@@ -38,8 +38,10 @@ export class AuthService {
       role,
     });
 
+    const payload = { sub: createdUser.id, email: createdUser.email, role: createdUser.role };
+
     return {
-      accessToken: 'mock-jwt-token',
+      accessToken: this.jwtService.sign(payload),
       user: {
         id: createdUser.id,
         email: createdUser.email,
