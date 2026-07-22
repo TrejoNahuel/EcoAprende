@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-form-login',
@@ -12,6 +13,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 export class FormLoginComponent {
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
   errorMessage = '';
   showPassword = false;
 
@@ -25,13 +27,27 @@ export class FormLoginComponent {
   }
 
   onSubmit(){
-    let email = this.loginForm.value.email;
-    let password = this.loginForm.value.password;
+    if (this.loginForm.invalid) return;
 
-    if(this.loginForm.valid){
-      console.log(`${email} - ${password}`);
-      this.router.navigate(['/home']);
-    }
+    this.errorMessage = '';
+
+    const credentials = {
+      email: this.loginForm.value.email!,
+      password: this.loginForm.value.password!
+    };
+
+    this.authService.login(credentials).subscribe({
+      next: () => {
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        if (err.status === 401) {
+          this.errorMessage = err.error?.message || 'Usuario o contraseña incorrectos';
+        } else {
+          this.errorMessage = 'Ocurrió un error al iniciar sesión. Intentá nuevamente.';
+        }
+      }
+    });
   }
 
   get email() { return this.loginForm.get('email'); }
