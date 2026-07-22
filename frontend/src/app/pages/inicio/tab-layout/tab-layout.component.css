@@ -24,8 +24,9 @@
 }
 
 .tab-button.active {
-    color: var(--primary-color);
+    position: relative;
     border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 .tab-button:focus {
