@@ -53,7 +53,7 @@ small{
 
 input {
     width: 100%;
-    padding: 0.75rem 1rem 0.75rem 1rem;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
     border: 1px solid var(--shadow-color-bg);
     border-radius: 8px;
     font-size: 0.95rem;
@@ -152,4 +152,10 @@ input:focus {
 
 .btn-register:hover {
     background-color: var(--primary-color-hover);
+}
+
+.btn-register:disabled {
+  color: var(--secondary-color-disabled);
+  background-color: var(--primary-color-disabled);
+  cursor: not-allowed;
 }
