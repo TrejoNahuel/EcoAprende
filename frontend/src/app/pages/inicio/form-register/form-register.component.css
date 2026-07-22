@@ -153,3 +153,9 @@ input:focus {
 .btn-register:hover {
     background-color: var(--primary-color-hover);
 }
+
+.btn-register:disabled {
+  color: var(--secondary-color-disabled);
+  background-color: var(--primary-color-disabled);
+  cursor: not-allowed;
+}
