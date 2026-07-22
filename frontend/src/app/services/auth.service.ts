@@ -26,6 +26,8 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface LoginResponse extends RegisterResponse {}
+
 // 👇 1. ESTO ES LO QUE TE PEDÍA ANGULAR (@Injectable)
 @Injectable({
   providedIn: 'root'
@@ -43,13 +45,13 @@ export class AuthService {
     );
   }
 
-  login(credentials: LoginRequest): Observable<{ access_token: string }> {
-    return this.http.post<{ access_token: string }>(
+  login(credentials: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
       `${this.apiUrl}/auth/login`,
       credentials
     ).pipe(
       tap(response => {
-        localStorage.setItem('token', response.access_token);
+        localStorage.setItem('token', response.accessToken);
       })
     );
   }
