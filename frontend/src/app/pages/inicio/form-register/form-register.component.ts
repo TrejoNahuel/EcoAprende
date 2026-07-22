@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService, UserRole } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-form-register',
@@ -38,7 +38,7 @@ export class FormRegisterComponent {
     const userData = {
       email: this.registerForm.value.email!,
       password: this.registerForm.value.password!,
-      role: this.registerForm.value.role!
+      role: this.registerForm.value.role! as UserRole
     };
 
     this.authService.register(userData).subscribe({
