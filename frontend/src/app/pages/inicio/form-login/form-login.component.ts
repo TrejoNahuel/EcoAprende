@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-form-login',
@@ -10,9 +11,9 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './form-login.component.css'
 })
 export class FormLoginComponent {
-  selectedRole: 'student' | 'teacher' = 'student';
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
   errorMessage = '';
   showPassword = false;
 
@@ -21,22 +22,13 @@ export class FormLoginComponent {
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)]]
   })
 
-  selectRole(role: 'student' | 'teacher'): void {
-    this.selectedRole = role;
-  }
-
   statePassword(){
     this.showPassword = !this.showPassword;
   }
 
   onSubmit(){
-    let email = this.loginForm.value.email;
-    let password = this.loginForm.value.password;
-    let role = this.selectedRole;
+    if (this.loginForm.invalid) return;
 
-    if(this.loginForm.valid){
-      console.log(`${email} - ${password} - ${role}`);
-      this.router.navigate(['/home']);
       /**
        *  if(this.authService.getUserRole() === 'student'){
             this.router.navigate(['/home-student']);
@@ -44,9 +36,27 @@ export class FormLoginComponent {
             this.router.navigate(['/home-teacher']);
           }
       */
-    }
+    this.errorMessage = '';
+
+    const credentials = {
+      email: this.loginForm.value.email!,
+      password: this.loginForm.value.password!
+    };
+
+    this.authService.login(credentials).subscribe({
+      next: () => {
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        if (err.status === 401) {
+          this.errorMessage = err.error?.message || 'Usuario o contraseña incorrectos';
+        } else {
+          this.errorMessage = 'Ocurrió un error al iniciar sesión. Intentá nuevamente.';
+        }
+      }
+    });
   }
 
-  get email(){return this.loginForm.get('email');}
-  get password(){return this.loginForm.get('password');}
+  get email() { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
 }

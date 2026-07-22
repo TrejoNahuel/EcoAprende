@@ -50,12 +50,23 @@
           }      
         }
 
-        <div class="input-group">
-            <select name="role" id="role" formControlName="role">
-                <option value="" disabled>Elige un rol</option>
-                <option value="student">Estudiante</option>
-                <option value="teacher">Profesor</option>
-            </select>
+        <div class="role-group">
+            <p class="form-label text-uppercase">¿Cuál es tu rol?</p>
+            <div class="role-selector">
+                <button type="button" class="role-option" [class.active]="selectedRole === 'student'" (click)="selectRole('student')">
+                    <div class="role-icon-container">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <span>Soy Estudiante</span>
+                </button>
+                
+                <button type="button" class="role-option" [class.active]="selectedRole === 'teacher'" (click)="selectRole('teacher')">
+                    <div class="role-icon-container">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <span>Soy Docente</span>
+                </button>
+            </div>
         </div>
         
         <button class="btn-register" type="submit" [disabled]="registerForm.invalid">Crear mi Cuenta</button>
