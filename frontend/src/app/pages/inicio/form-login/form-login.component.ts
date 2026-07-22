@@ -29,6 +29,13 @@ export class FormLoginComponent {
   onSubmit(){
     if (this.loginForm.invalid) return;
 
+      /**
+       *  if(this.authService.getUserRole() === 'student'){
+            this.router.navigate(['/home-student']);
+          }else{
+            this.router.navigate(['/home-teacher']);
+          }
+      */
     this.errorMessage = '';
 
     const credentials = {

@@ -35,6 +35,7 @@ export interface LoginResponse extends RegisterResponse {}
 // 👇 2. AQUÍ DEBE DECIR "class", NO "interface"
 export class AuthService {
   private apiUrl = environment.apiUrl;
+  private userRole: UserRole | null = null;
 
   constructor(private http: HttpClient) { }
 
@@ -66,5 +67,9 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+  }
+
+  getUserRole(): string | null{
+    return this.userRole;
   }
 }
