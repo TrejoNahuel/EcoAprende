@@ -17,14 +17,18 @@ export class FormRegisterComponent {
 
   showPassword = false;
   message = '';
+  selectedRole: UserRole = 'student';
 
   registerForm = this.fb.group({
     name: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)]],
-    role: ['', [Validators.required]]
+    password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)]]
   })
+
+  selectRole(role: UserRole): void {
+    this.selectedRole = role;
+  }
 
   statePassword(){
     this.showPassword = !this.showPassword;
@@ -38,7 +42,7 @@ export class FormRegisterComponent {
     const userData = {
       email: this.registerForm.value.email!,
       password: this.registerForm.value.password!,
-      role: this.registerForm.value.role! as UserRole
+      role: this.selectedRole!
     };
 
     this.authService.register(userData).subscribe({
