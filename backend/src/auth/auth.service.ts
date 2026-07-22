@@ -9,7 +9,6 @@ import { CryptoService } from '../crypto/crypto.service';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { UserSessionDto } from './dto/user-session.dto';
 import { JwtService } from '@nestjs/jwt'; // <-- Para generar el token real
-import * as bcrypt from 'bcrypt'; // <-- Para comparar contraseñas
 import { LoginDto } from './dto/login.dto';
 
 @Injectable()
@@ -58,8 +57,7 @@ export class AuthService {
     }
 
     // 3. Comparar contraseñas
-    // (Usamos bcrypt directo como pide tu ticket)
-    const isPasswordValid = await bcrypt.compare(
+    const isPasswordValid = this.cryptoService.comparePassword(
       loginDto.password,
       user.password,
     );
