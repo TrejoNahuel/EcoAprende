@@ -8,6 +8,7 @@
       }
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container"> 
         <div class="input-group">
+            <i class="fa-solid fa-user input-icon"></i>
             <input type="name"  formControlName="name" placeholder="Nombre/s">
         </div>
         @if (name?.touched && name?.invalid) {
@@ -16,7 +17,8 @@
             } 
         }
 
-        <div class="input-group">            
+        <div class="input-group">
+            <i class="fa-solid fa-user input-icon"></i>
             <input type="lastname"  formControlName="lastname" placeholder="Apellido/s">
         </div>
         @if (lastname?.touched && lastname?.invalid) {
@@ -25,7 +27,8 @@
             } 
           }
 
-        <div class="input-group">          
+        <div class="input-group">
+          <i class="fa-solid fa-envelope input-icon"></i>
           <input type="email"  formControlName="email" placeholder="Correo electrónico">
         </div>
         @if (email?.touched && email?.invalid) {
@@ -36,7 +39,8 @@
           }
         }
           
-        <div class="input-group">          
+        <div class="input-group">
+            <i class="fa-solid fa-lock input-icon"></i>
             <input [type]="showPassword? 'text':'password'" formControlName="password" placeholder="Contraseña" >     
             <button type="button" class="show-icon fa" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword" (click)="statePassword()"></button>         
         </div>

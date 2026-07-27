@@ -9,6 +9,8 @@
     --shadow-color-bg: #d8d7d7;
     --shadow-icon-color: #94a3b8;
     --primary-color-hover: #1c6e53;
+    --primary-color-disabled: #d8d7d7;
+    --secondary-color-disabled: #64748b;
     --primary-color-bg: #e5f8eb;
     --error-color: #ef4444;
 }

@@ -105,7 +105,12 @@ input:focus {
 }
 .btn-login:hover {
     background-color: var(--primary-color-hover);
-} 
+}
+.btn-login:disabled {
+  color: var(--secondary-color-disabled);
+  background-color: var(--primary-color-disabled);
+  cursor: not-allowed;
+}
 
 .btn-passwd {
   background: none;
