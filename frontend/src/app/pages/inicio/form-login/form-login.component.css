@@ -47,11 +47,16 @@ small {
 }
 
 .form-label {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #3f4e42;
-    margin-bottom: 10px;
-    margin-left: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #3f4e42;
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+
+.form-required-indicator {
+  color: var(--error-color);
+  margin-left: 0.25rem;
 }
 
 .input-group {
@@ -60,6 +65,7 @@ small {
   align-items: center;
   width: 100%;
 }
+
 .input-icon {
   position: absolute;
   left: 1rem;

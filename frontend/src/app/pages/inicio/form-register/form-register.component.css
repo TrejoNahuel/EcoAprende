@@ -32,6 +32,11 @@
     margin-left: 0;
 }
 
+.form-required-indicator {
+  color: var(--error-color);
+  margin-left: 0.25rem;
+}
+
 .input-group {
   position: relative;
   display: flex;
