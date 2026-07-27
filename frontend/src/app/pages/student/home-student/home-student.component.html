@@ -1,1 +1,10 @@
-<p>home-student works!</p>
+<div>
+    @for(module of modules; track module.id){
+        <div>
+            <p>{{module.id}}</p>
+            <p>{{module.title}}</p>
+            <p>{{module.description}}</p>
+        </div>
+    }
+
+</div>

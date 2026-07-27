@@ -34,10 +34,11 @@ export interface LoginResponse extends RegisterResponse {}
 })
 // 👇 2. AQUÍ DEBE DECIR "class", NO "interface"
 export class AuthService {
-  private apiUrl = environment.apiUrl;
+  private readonly apiUrl = environment.apiUrl;
   private userRole: UserRole | null = null;
+  private userId: number = 0;
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   register(userData: RegisterRequest): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(
@@ -52,6 +53,8 @@ export class AuthService {
       credentials
     ).pipe(
       tap(response => {
+        this.userRole = response.user.role;
+        this.userId = response.user.id;
         localStorage.setItem('token', response.accessToken);
       })
     );
@@ -71,5 +74,9 @@ export class AuthService {
 
   getUserRole(): string | null{
     return this.userRole;
+  }
+
+  getUserId(): number {
+    return this.userId;
   }
 }
