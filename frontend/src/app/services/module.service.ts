@@ -19,7 +19,10 @@ export class ModuleService {
     private USE_MOCK = true; // para simular una peticion 
     private mockData: ModuleResponse[] = [
         {id: 1, title: 'Restauracion de bosques', description: 'Aprende las tecnicas de reforestacion y como ...'},
-        {id: 2, title: 'Oceanos limpios', description: 'Descubre el impacto del plastico...'}
+        {id: 2, title: 'Oceanos limpios', description: 'Descubre el impacto del plastico...'},
+        {id: 3, title: 'Oceanos limpios', description: 'Descubre el impacto del plastico...'},
+        {id: 4, title: 'Oceanos limpios', description: 'Descubre el impacto del plastico...'},
+        {id: 5, title: 'Restauracion de bosques', description: 'Aprende las tecnicas de reforestacion y como ...'}
     ]
 
     constructor (

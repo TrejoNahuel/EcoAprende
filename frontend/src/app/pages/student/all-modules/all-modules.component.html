@@ -1,0 +1,10 @@
+<div class="container mb-4 mt-3">
+    <h3 class="h4 mb-3 text-dark fw-semibold">Mis Módulos</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+        @for (module of modules ; track module.id) {
+            <div class="col">
+                <app-module-card [module]="module" />
+            </div>
+        }
+    </div>
+</div>
