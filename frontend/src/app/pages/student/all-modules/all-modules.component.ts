@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, ModuleCardComponent],
   templateUrl: './all-modules.component.html',
-  styleUrl: './all-modules.component.css'
 })
 export class AllModulesComponent implements OnInit {
   modules: ModuleResponse[] = [];

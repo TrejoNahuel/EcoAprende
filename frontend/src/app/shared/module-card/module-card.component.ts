@@ -6,7 +6,6 @@ import { ModuleResponse } from '../../services/module.service';
   standalone: true,
   imports: [],
   templateUrl: './module-card.component.html',
-  styleUrl: './module-card.component.css'
 })
 export class ModuleCardComponent {
   @Input() module!: ModuleResponse;
