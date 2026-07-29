@@ -7,6 +7,7 @@ import { FormLoginComponent } from './pages/inicio/form-login/form-login.compone
 import { FormRegisterComponent } from './pages/inicio/form-register/form-register.component';
 import { HomeStudentComponent } from './pages/student/home-student/home-student.component';
 import { HomeTeacherComponent } from './pages/teacher/home-teacher/home-teacher.component';
+import { AllModulesComponent } from './pages/student/all-modules/all-modules.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,14 @@ export const routes: Routes = [
         canActivate: [AuthGuard, RoleGuard],
         data: {
             role: 'teacher'
+        }
+    },
+    {
+        path: 'student-modules',
+        component: AllModulesComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data: {
+            role: 'student'
         }
     },
 ];

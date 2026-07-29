@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { CryptoModule } from './crypto/crypto.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ModulesModule } from './modules/modules.module';
+import { LevelModule } from './levels/level.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { AuthModule } from './auth/auth.module';
     CryptoModule,
     UsersModule,
     AuthModule,
+    ModulesModule,
+    LevelModule,
   ],
   controllers: [AppController],
   providers: [AppService],
