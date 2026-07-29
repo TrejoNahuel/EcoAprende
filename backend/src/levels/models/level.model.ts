@@ -2,7 +2,7 @@ import type { CreationOptional, InferAttributes, InferCreationAttributes } from 
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'level',
+  tableName: 'levels',
   timestamps: false,
 })
 export class Level extends Model<InferAttributes<Level>, InferCreationAttributes<Level>> {
