@@ -1,0 +1,16 @@
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(4, 106, 56, 0.15) !important;
+}
+
+.border-success {
+    border-color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--primary-color) !important;
+}
