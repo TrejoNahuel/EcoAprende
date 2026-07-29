@@ -14,7 +14,7 @@ module.exports = {
       allowNull: false,
       defaultValue: 1,
       references: {
-        model: 'level',
+        model: 'levels',
         key: 'id',
       },
       onUpdate: 'CASCADE',
