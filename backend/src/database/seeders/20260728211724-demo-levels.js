@@ -2,8 +2,8 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('level', [
+  async up (queryInterface) {
+    await queryInterface.bulkInsert('levels', [
       {
         id: 1,
         name: 'Semilla',
@@ -57,7 +57,7 @@ module.exports = {
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('level', null, {});
+  async down (queryInterface) {
+    await queryInterface.bulkDelete('levels', null, {});
   }
 };
