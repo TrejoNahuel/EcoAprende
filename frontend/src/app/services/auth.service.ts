@@ -56,6 +56,7 @@ export class AuthService {
         this.userRole = response.user.role;
         this.userId = response.user.id;
         localStorage.setItem('token', response.accessToken);
+        localStorage.setItem('role', response.user.role);
       })
     );
   }
@@ -73,7 +74,7 @@ export class AuthService {
   }
 
   getUserRole(): string | null{
-    return this.userRole;
+    return this.userRole || localStorage.getItem('role');
   }
 
   getUserId(): number {
