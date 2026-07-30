@@ -1,8 +1,8 @@
 import type { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
-import { HasMany } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import { UserMission } from '../../missions/models/user-mission.model';
 import { UserRole } from '../types/user-rol.types';
+import { Level } from 'src/levels/models/level.model';
 
 @Table({
   tableName: 'users',
@@ -32,6 +32,24 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
     allowNull: false,
   })
   declare role: UserRole;
+
+@Column({
+    type: DataType.INTEGER,
+    defaultValue: 0
+  })
+  declare points: number;
+
+  @ForeignKey(() => Level)
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+    defaultValue: 1,
+    field: 'level_id',
+  })
+  declare levelId: CreationOptional<number>;
+
+  @BelongsTo(() => Level)
+  declare level?: Level;
 
   @HasMany(() => UserMission)
   declare userMissions: UserMission[];

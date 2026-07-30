@@ -9,6 +9,11 @@
     overflow: hidden;
 }
 
+.left-side {
+    height: 100%;
+    overflow-y: scroll;
+}
+
 .right-side app-cover,
 .left-side app-tab-layout {
     display: block;

@@ -14,7 +14,12 @@ export class UsersService {
     return this.userModel.findOne({ where: { email } });
   }
 
-  create(dto: CreateUserDto): Promise<User> {
-    return this.userModel.create(dto);
+  create({ email, password, role }: CreateUserDto): Promise<User> {
+    return this.userModel.create({
+      email,
+      password,
+      role,
+      points: 0,
+    });
   }
 }
