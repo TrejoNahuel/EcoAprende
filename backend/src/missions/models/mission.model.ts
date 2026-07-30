@@ -8,8 +8,10 @@ import {
   Column,
   Model,
   DataType,
+  HasMany
 } from 'sequelize-typescript';
 import { MissionFrequency } from '../types/mission-frequency.type';
+import { UserMission } from './user-mission.model';
 
 @Table({
   tableName: 'missions',
@@ -55,4 +57,7 @@ export class Mission extends Model<
     allowNull: false,
   })
   declare frequency: MissionFrequency;
+
+  @HasMany(() => UserMission)
+  declare userMissions: UserMission[];
 }
