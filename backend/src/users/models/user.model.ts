@@ -1,6 +1,5 @@
 import type { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
-import { HasMany } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import { UserMission } from '../../missions/models/user-mission.model';
 import { UserRole } from '../types/user-rol.types';
 import { Level } from '../../levels/models/level.model';
@@ -34,9 +33,6 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   })
   declare role: UserRole;
 
-  @HasMany(() => UserMission)
-  declare userMissions: UserMission[];
-
   @Column({
     type: DataType.INTEGER,
     defaultValue: 0
@@ -54,4 +50,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
 
   @BelongsTo(() => Level)
   declare level?: Level;
+
+  @HasMany(() => UserMission)
+  declare userMissions: UserMission[];
 }
