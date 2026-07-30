@@ -10,7 +10,6 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
-  Index,
 } from 'sequelize-typescript';
 
 import { User } from '../../users/models/user.model';
@@ -58,8 +57,8 @@ export class UserMission extends Model<
   declare completedAt: Date;
 
   @BelongsTo(() => User)
-  declare user: User;
+  declare user?: User;
 
   @BelongsTo(() => Mission)
-  declare mission: Mission;
+  declare mission?: Mission;
 }
