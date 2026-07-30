@@ -8,6 +8,7 @@ import { FormRegisterComponent } from './pages/inicio/form-register/form-registe
 import { HomeStudentComponent } from './pages/student/home-student/home-student.component';
 import { HomeTeacherComponent } from './pages/teacher/home-teacher/home-teacher.component';
 import { AllModulesComponent } from './pages/student/all-modules/all-modules.component';
+import { LessonsComponent } from './pages/student/lessons/lessons.component';
 
 export const routes: Routes = [
     {
@@ -44,11 +45,14 @@ export const routes: Routes = [
         }
     },
     {
-        path: 'student-modules',
-        component: AllModulesComponent,
+        path: 'modules',
         canActivate: [AuthGuard, RoleGuard],
         data: {
             role: 'student'
-        }
+        },
+        children: [
+            { path: '', component: AllModulesComponent },
+            { path: ':id/lessons', component: LessonsComponent }
+        ]
     },
 ];
