@@ -8,8 +8,8 @@
         <p class="card-text text-secondary flex-grow-1">{{ module.description }}</p>
         
         <!-- Opcional: Un enlace o indicador de acción -->
-        <div class="mt-3 text-success fw-semibold small d-flex align-items-center">
+        <a [routerLink]="['/modules', module.id, 'lessons']" class="mt-3 text-success fw-semibold small d-flex align-items-center text-decoration-none">
             Explorar módulo <span class="ms-1">&rarr;</span>
-        </div>
+        </a>
     </div>
 </div>
