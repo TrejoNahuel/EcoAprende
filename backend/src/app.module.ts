@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ModulesModule } from './modules/modules.module';
 import { LevelModule } from './levels/level.module';
+import { MissionsModule } from './missions/missions.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { LevelModule } from './levels/level.module';
     AuthModule,
     ModulesModule,
     LevelModule,
+    MissionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

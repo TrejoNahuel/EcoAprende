@@ -3,13 +3,7 @@ import type {
   InferAttributes,
   InferCreationAttributes,
 } from 'sequelize';
-import {
-  Table,
-  Column,
-  Model,
-  DataType,
-  HasMany
-} from 'sequelize-typescript';
+import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
 import { MissionFrequency } from '../types/mission-frequency.type';
 import { UserMission } from './user-mission.model';
 

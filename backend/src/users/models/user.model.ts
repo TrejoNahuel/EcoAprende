@@ -52,5 +52,5 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare level?: Level;
 
   @HasMany(() => UserMission)
-  declare userMissions: UserMission[];
+  declare userMissions?: UserMission[];
 }
