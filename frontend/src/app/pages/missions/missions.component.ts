@@ -1,0 +1,51 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MissionService, Mission } from '../../services/mission.service';
+
+type MissionStatus = 'available' | 'completed';
+
+@Component({
+  selector: 'app-missions',
+  templateUrl: './missions.component.html',
+})
+export class MissionsComponent implements OnInit {
+  availableMissions: Mission[] = [];
+  completedMissions: Mission[] = [];
+
+  constructor(
+    private missionService: MissionService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  get selectedMissionStatus(): MissionStatus {
+    const defaultStatus = 'available' as MissionStatus;
+    const status: MissionStatus = (this.route.snapshot.queryParamMap.get('status') as MissionStatus) || defaultStatus;
+
+    return status;
+  }
+
+  ngOnInit(): void {
+    this.loadMissions();
+  }
+
+  private loadMissions(): void {
+    this.missionService.getMissions().subscribe({
+      next: (response) => {
+        this.availableMissions = response.availableMissions;
+        this.completedMissions = response.completedMissions;
+      },
+      error: (err) => {
+        console.error('Error al obtener las misiones', err);
+      }
+    });
+  }
+
+  changeTab(status: MissionStatus): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { status },
+      queryParamsHandling: 'merge',
+    });
+  }
+}

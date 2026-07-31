@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
-interface Mission {
+export interface Mission {
   id: number;
   title: string;
   description: string | null;
@@ -13,12 +13,12 @@ interface Mission {
   frequency: 'daily' | 'weekly';
 }
 
-interface GetMissionsResponse {
+export interface GetMissionsResponse {
   availableMissions: Mission[];
   completedMissions: Mission[];
 }
 
-interface CompleteMissionResponse {
+export interface CompleteMissionResponse {
   missionId: number;
   points: number;
   badge: string | null;
