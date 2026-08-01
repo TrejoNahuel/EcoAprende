@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgClass } from '@angular/common';
+import { AddMissionCardComponent } from './add-mission-card.component';
+import { MissionCardComponent } from './mission-card.component';
 import { MissionService, Mission } from '../../services/mission.service';
 
 type MissionStatus = 'available' | 'completed';
 
 @Component({
+  imports: [AddMissionCardComponent, MissionCardComponent, NgClass],
+  standalone: true,
   selector: 'app-missions',
   templateUrl: './missions.component.html',
 })
