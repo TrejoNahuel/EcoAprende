@@ -1,0 +1,44 @@
+<aside class="d-flex flex-column align-items-stretch p-2 bg-white border-end shadow-sm" style="width: 260px; min-height: 100vh;">
+    <div class="d-flex align-items-center mb-3 px-2 pb-3 border-bottom">
+        <span class="fs-4 fw-bold text-success">EcoExplorador</span>
+    </div>
+
+    <!-- Sección de datos -->
+    <div class="my-2 p-3 rounded-4 bg-light border border-opacity-10">
+        @if (perfil) {
+            <div class="user-info">
+                <p class="mb-1 text-truncate text-secondary small fw-medium">{{ perfil.email }}</p>
+                <p class="mb-0 text-success fw-bold d-flex align-items-center gap-1">
+                        {{ perfil.level }} 
+                    <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 ms-auto">
+                        {{ perfil.points }} pts
+                    </span>
+                </p>
+            </div>
+        }
+    </div>
+
+    <!-- Lista de Opciones -->
+    <ul class="nav nav-pills flex-column mb-auto gap-1">
+        <li class="nav-item">
+            <a href="#" class="nav-link active bg-success text-white py-2 px-3 rounded-3 shadow-sm" aria-current="page">
+                <i class="bi bi-house-door me-2"></i> Inicio
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link text-dark py-2 px-3 rounded-3 hover-bg-light">
+                <i class="bi bi-speedometer2 me-2"></i> Modulos
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link text-dark py-2 px-3 rounded-3 hover-bg-light">
+                <i class="bi bi-person me-2"></i> Misiones
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link text-dark py-2 px-3 rounded-3 hover-bg-light">
+                <i class="bi bi-gear me-2"></i> Configuración
+            </a>
+        </li>
+    </ul>
+</aside>

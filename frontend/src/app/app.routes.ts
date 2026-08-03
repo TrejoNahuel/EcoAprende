@@ -9,6 +9,7 @@ import { HomeStudentComponent } from './pages/student/home-student/home-student.
 import { HomeTeacherComponent } from './pages/teacher/home-teacher/home-teacher.component';
 import { AllModulesComponent } from './pages/student/all-modules/all-modules.component';
 import { LessonsComponent } from './pages/student/lessons/lessons.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
     {
@@ -25,34 +26,41 @@ export const routes: Routes = [
         ]
     },
     {
+        path: '',
+        component: MainLayoutComponent,
+        children: [
+            {
+                path: 'home-student',
+                component: HomeStudentComponent,
+                canActivate: [AuthGuard, RoleGuard],
+                data: {
+                    role: 'student'
+                }
+            },
+            {
+                path: 'home-teacher',
+                component: HomeTeacherComponent,
+                canActivate: [AuthGuard, RoleGuard],
+                data: {
+                    role: 'teacher'
+                }
+            },
+            {
+                path: 'modules',
+                canActivate: [AuthGuard, RoleGuard],
+                data: {
+                    role: 'student'
+                },
+                children: [
+                    { path: '', component: AllModulesComponent },
+                    { path: ':id/lessons', component: LessonsComponent }
+                ]
+            },
+        ]
+    },
+    {
         path: 'home', 
         component: HomeComponent
     },
-    {
-        path: 'home-student',
-        component: HomeStudentComponent,
-        canActivate: [AuthGuard, RoleGuard],
-        data: {
-            role: 'student'
-        }
-    },
-    {
-        path: 'home-teacher',
-        component: HomeTeacherComponent,
-        canActivate: [AuthGuard, RoleGuard],
-        data: {
-            role: 'teacher'
-        }
-    },
-    {
-        path: 'modules',
-        canActivate: [AuthGuard, RoleGuard],
-        data: {
-            role: 'student'
-        },
-        children: [
-            { path: '', component: AllModulesComponent },
-            { path: ':id/lessons', component: LessonsComponent }
-        ]
-    },
+    
 ];
