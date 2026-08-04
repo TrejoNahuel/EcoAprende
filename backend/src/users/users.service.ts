@@ -11,9 +11,11 @@ export interface UserProfile {
   email: string;
   role: string;
   points: number;
-  level: number;
-  levelName: string | undefined;
-  minPoints: number | undefined;
+  level: {
+    id: number;
+    name: string;
+    minPoints: number;
+  };
   nextLevel: { name: string; minPoints: number } | null;
 }
 
@@ -24,11 +26,11 @@ export class UsersService {
     @InjectModel(Level) private readonly levelModel: ModelCtor<Level>,
   ) {}
 
-  findByEmail(email: string): Promise<User | null> {
+  async findByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ where: { email } });
   }
 
-  create({ email, password, role }: CreateUserDto): Promise<User> {
+  async create({ email, password, role }: CreateUserDto): Promise<User> {
     return this.userModel.create({
       email,
       password,
@@ -59,9 +61,11 @@ export class UsersService {
       email: user.email,
       role: user.role,
       points: user.points,
-      level: user.levelId,
-      levelName: user.level?.name,
-      minPoints: user.level?.minPoints,
+      level: {
+        id: user.levelId,
+        name: user.level.name,
+        minPoints: user.level.minPoints,
+      },
       nextLevel: nextLevel
         ? { name: nextLevel.name, minPoints: nextLevel.minPoints }
         : null,
