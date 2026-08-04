@@ -1,7 +1,8 @@
 import type { CreationOptional, InferAttributes, InferCreationAttributes, NonAttribute } from 'sequelize';
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
+import { UserMission } from '../../missions/models/user-mission.model';
 import { UserRole } from '../types/user-rol.types';
-import { Level } from 'src/levels/models/level.model';
+import { Level } from '../../levels/models/level.model';
 
 @Table({
   tableName: 'users',
@@ -49,4 +50,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
 
   @BelongsTo(() => Level)
   declare level: NonAttribute<Level>;
+
+  @HasMany(() => UserMission)
+  declare userMissions?: UserMission[];
 }
