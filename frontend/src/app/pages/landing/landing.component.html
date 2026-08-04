@@ -25,14 +25,14 @@
         </svg>
       </button>
 
-      <button class="btn btn-light rounded-circle p-2 d-flex align-items-center justify-content-center" title="Notificaciones">
+      <button class="btn btn-light rounded-circle p-2 me-2 d-flex align-items-center justify-content-center" title="Notificaciones">
         <svg width="20" height="20" fill="#2c3e50" viewBox="0 0 24 24">
           <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
         </svg>
       </button>
 
       <!-- Logged In User State -->
-      <div *ngIf="isLoggedIn" class="d-flex align-items-center gap-2 ps-2 border-start">
+      <div *ngIf="isLoggedIn" class="d-flex align-items-center gap-2 ps-4 border-start">
         <img [src]="userProfile.avatarUrl" [alt]="userProfile.name" class="rounded-circle border border-2 border-success object-fit-cover" width="40" height="40">
       </div>
     </div>
@@ -186,7 +186,7 @@
           <h2 class="fw-bold text-dark mb-2">Rutas de Aprendizaje</h2>
           <p class="text-muted mb-0 fs-5">Domina las ciencias ambientales a través de niveles estructurados.</p>
         </div>
-        <a href="#modules" class="text-success fw-bold text-decoration-none d-inline-flex align-items-center gap-1 mt-3 mt-md-0">
+        <a routerLink="/modules" class="text-success fw-bold text-decoration-none d-inline-flex align-items-center gap-1 mt-3 mt-md-0">
           Ver todos los módulos
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
@@ -357,7 +357,7 @@
         <p class="small text-muted mb-0">Transformando la educación ambiental a través del juego y la tecnología social.</p>
       </div>
 
-      <div class="col-6 col-md-2">
+      <div class="text-center text-md-start col-6 col-md-2">
         <h6 class="text-white fw-bold mb-3">Plataforma</h6>
         <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
           <li><a href="#modules" class="text-white-50 text-decoration-none">Módulos</a></li>
@@ -366,7 +366,7 @@
         </ul>
       </div>
 
-      <div class="col-6 col-md-3">
+      <div class="text-center text-md-start col-6 col-md-3">
         <h6 class="text-white fw-bold mb-3">Institucional</h6>
         <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
           <li><a href="#about-us" class="text-white-50 text-decoration-none">Sobre la Fundación</a></li>
@@ -375,7 +375,7 @@
         </ul>
       </div>
 
-      <div class="col-12 col-md-3">
+      <div class="d-flex flex-column align-items-center d-md-block col-12 col-md-3">
         <h6 class="text-white fw-bold mb-3">Síguenos</h6>
         <div class="d-flex gap-2">
           <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
