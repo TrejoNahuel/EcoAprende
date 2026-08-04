@@ -1,4 +1,4 @@
-import type { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
+import type { CreationOptional, InferAttributes, InferCreationAttributes, NonAttribute } from 'sequelize';
 import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import { UserMission } from '../../missions/models/user-mission.model';
 import { UserRole } from '../types/user-rol.types';
@@ -49,7 +49,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare levelId: CreationOptional<number>;
 
   @BelongsTo(() => Level)
-  declare level?: Level;
+  declare level: NonAttribute<Level>;
 
   @HasMany(() => UserMission)
   declare userMissions?: UserMission[];
