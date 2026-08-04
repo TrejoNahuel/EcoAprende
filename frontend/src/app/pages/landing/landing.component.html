@@ -1,0 +1,399 @@
+<!-- Top Navigation Bar -->
+<header class="py-2 sticky-top bg-white border-bottom shadow-sm z-3">
+  <div class="container d-flex justify-content-between align-items-center py-2 px-3 px-md-4">
+    <!-- Brand Logo -->
+    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none">
+      <svg class="text-success" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4a1 1 0 001.25 1.25l1.79-.62A8.962 8.962 0 0012 21c4.97 0 9-4.03 9-9 0-4.97-4.03-9-9-9zm0 16c-1.85 0-3.56-.63-4.93-1.69l-.36-.28-1.12.39.39-1.12-.28-.36A6.947 6.947 0 015 12c0-3.86 3.14-7 7-7s7 3.14 7 7-3.14 7-7 7z"/>
+      </svg>
+      <span class="fs-4 fw-bold text-success">EcoAprende</span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="d-none d-md-flex align-items-center gap-4">
+      <a href="#hero" class="fw-semibold text-success text-decoration-none border-bottom border-2 border-success py-1">Inicio</a>
+      <a href="#how-it-works" class="fw-semibold text-secondary text-decoration-none py-1">Cómo funciona</a>
+      <a href="#modules" class="fw-semibold text-secondary text-decoration-none py-1">Módulos</a>
+      <a href="#about-us" class="fw-semibold text-secondary text-decoration-none py-1">Sobre nosotros</a>
+    </nav>
+
+    <!-- User Profile & Action Header Items -->
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-light rounded-circle p-2 d-flex align-items-center justify-content-center" title="Favoritos">
+        <svg width="20" height="20" fill="#2c3e50" viewBox="0 0 24 24">
+          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+        </svg>
+      </button>
+
+      <button class="btn btn-light rounded-circle p-2 d-flex align-items-center justify-content-center" title="Notificaciones">
+        <svg width="20" height="20" fill="#2c3e50" viewBox="0 0 24 24">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+        </svg>
+      </button>
+
+      <!-- Logged In User State -->
+      <div *ngIf="isLoggedIn" class="d-flex align-items-center gap-2 ps-2 border-start">
+        <img [src]="userProfile.avatarUrl" [alt]="userProfile.name" class="rounded-circle border border-2 border-success object-fit-cover" width="40" height="40">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="hero" class="py-4 bg-light overflow-hidden">
+    <div class="container py-md-4">
+      <div class="row align-items-center g-5">
+        <!-- Hero Text Column -->
+        <div class="col-12 col-lg-6 text-center text-lg-start">
+          <div class="d-inline-block bg-success-subtle text-success px-4 py-2 rounded-pill fw-bold fs-7 mb-3">
+            Nueva misión disponible!
+          </div>
+
+          <h1 class="display-4 fw-bold text-dark lh-sm mb-3">
+            Aprende a proteger el planeta <span class="text-success italic">jugando.</span>
+          </h1>
+
+          <p class="lead text-muted mb-4 fs-5">
+            EcoAprende transforma la educación ambiental en una aventura interactiva. Gana XP, completa misiones y conviértete en un héroe del medio ambiente.
+          </p>
+
+          <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
+            <button routerLink="/home" class="btn btn-success btn-lg px-4 py-3 fw-bold rounded-3 shadow-sm">
+              Comenzar a aprender
+            </button>
+            <a href="#modules" class="btn btn-outline-success btn-lg px-4 py-3 fw-bold rounded-3">
+              Ver Módulos
+            </a>
+          </div>
+
+          <!-- Social Proof -->
+          <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-3 pt-2">
+            <div class="d-flex">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXQNenKg0LhnWSoEUlu8arhUdeKD30_QYGAciJXeCUHB7Iq9OwZfEeJwVu-3Dd6wuCCkp-zdIRsfW6LhyLvYi_dDzg8-HtnuTl9GW1qeKlDzsDSlTk2BWvBcAbg4O5OmQfpgQqVm7Moq_NzqKs21GlrTJ8B9D5CzJN30ubA2y4D29fBjFiBMt4NzjEYpUv_XsacRH2XFtuy-XmtAKqDZRNBnRl4PMhD2F5CKfG8w9tbVz6rZqcG19R" class="rounded-circle border border-2 border-white object-fit-cover" width="38" height="38" alt="Student avatar">
+              <div class="rounded-circle border border-2 border-white bg-success text-white d-flex align-items-center justify-content-center fw-bold fs-7 ms-n2" style="width: 38px; height: 38px;">
+                +2k
+              </div>
+            </div>
+            <p class="small text-muted mb-0 text-start">Estudiantes ya están plantando árboles virtuales</p>
+          </div>
+        </div>
+
+        <!-- Hero Image & Interactive Floating Cards -->
+        <div class="col-12 col-lg-6 position-relative text-center">
+          <div class="position-relative d-inline-block w-100 max-w-lg">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuApCnqnZXDssNXJ1tuVKqpBcCRzgyB-Ss7JHw6iQ924M1Om917rw2YSx9qnreqZNnGCfYUrr6i5uWRDlH0iNUcjy5gedBa8gUhTEaHeyuZeLqgLxaXBnbeGainLaMEH_N7rJOUuxkoCEanbyr_Fh9HZ8S66iiJIF24NOu--2ZWthaqAIkg-GmUJXhlD4yJz59zGmWyKHqjCi_ZeJmHX53__Ki5XZWhy1QjOERsLgJUs7kYch_t7B9Uw" class="img-fluid rounded-4 shadow-lg w-100 object-fit-cover" style="max-height: 480px;" alt="Estudiantes en parque ecológico">
+
+            <!-- Floating Level Card -->
+            <div class="position-absolute top-0 end-0 translate-middle-y me-n2 bg-white p-3 rounded-4 shadow border d-flex align-items-center gap-3">
+              <div class="bg-warning p-2 rounded-3 text-white d-flex align-items-center justify-content-center">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="text-start">
+                <p class="fw-bold mb-0 text-dark fs-7">Nivel {{ userLevel }}</p>
+                <small class="text-muted fs-8">{{ userProfile.role }}</small>
+              </div>
+            </div>
+
+            <!-- Floating Progress Card -->
+            <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n2 bg-white p-3 rounded-4 shadow border text-start d-none d-sm-block" style="min-width: 180px;">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-bold fs-7 text-dark">Progreso</span>
+                <span class="fw-bold fs-7 text-success">{{ userProgress }}%</span>
+              </div>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-success rounded-pill" role="progressbar" [style.width.%]="userProgress"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Metrics / Stats Section -->
+  <section class="py-4 bg-white border-bottom border-top">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-md-3" *ngFor="let stat of platformStats">
+          <div class="p-3">
+            <h3 class="display-6 fw-bold mb-1" [ngClass]="stat.textColorClass">{{ stat.value }}</h3>
+            <p class="fw-semibold text-muted small mb-0">{{ stat.label }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works Section -->
+  <section id="how-it-works" class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="text-center max-w-2xl mx-auto mb-5">
+        <h2 class="fw-bold text-dark mb-3">Cómo funciona</h2>
+        <p class="text-muted fs-5">Hemos gamificado el aprendizaje para que salvar el planeta sea tan divertido como tu videojuego favorito.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Feature 1 -->
+        <div class="col-12 col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-shadow transition">
+            <div class="bg-info-subtle text-info p-3 rounded-4 d-inline-flex align-items-center justify-content-center mb-4" style="width: 56px; height: 56px;">
+              <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+              </svg>
+            </div>
+            <h3 class="h4 fw-bold text-dark mb-3">Módulos</h3>
+            <p class="text-muted mb-0">Contenido educativo de alta calidad sobre biodiversidad, reciclaje y energías renovables diseñado por expertos.</p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="col-12 col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-shadow transition">
+            <div class="bg-success-subtle text-success p-3 rounded-4 d-inline-flex align-items-center justify-content-center mb-4" style="width: 56px; height: 56px;">
+              <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+              </svg>
+            </div>
+            <h3 class="h4 fw-bold text-dark mb-3">Misiones</h3>
+            <p class="text-muted mb-0">Retos diarios en el mundo real que te invitan a tomar acción inmediata: desde compostaje hasta limpieza de playas.</p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="col-12 col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-shadow transition">
+            <div class="bg-warning-subtle text-warning p-3 rounded-4 d-inline-flex align-items-center justify-content-center mb-4" style="width: 56px; height: 56px;">
+              <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V18H8v2h8v-2h-3v-2.1c2.25-.41 4-2.38 4-4.8V8c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+              </svg>
+            </div>
+            <h3 class="h4 fw-bold text-dark mb-3">XP y Recompensas</h3>
+            <p class="text-muted mb-0">Cada acción cuenta. Gana puntos de experiencia, desbloquea insignias y compite saludablemente con tus compañeros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Modules Section -->
+  <section id="modules" class="py-5 bg-white">
+    <div class="container py-4">
+      <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
+        <div>
+          <h2 class="fw-bold text-dark mb-2">Rutas de Aprendizaje</h2>
+          <p class="text-muted mb-0 fs-5">Domina las ciencias ambientales a través de niveles estructurados.</p>
+        </div>
+        <a href="#modules" class="text-success fw-bold text-decoration-none d-inline-flex align-items-center gap-1 mt-3 mt-md-0">
+          Ver todos los módulos
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-4" *ngFor="let module of learningModules">
+          <div class="card h-100 border rounded-4 shadow-sm overflow-hidden d-flex flex-column">
+            <img [src]="module.imageUrl" class="card-img-top object-fit-cover" style="height: 190px;" [alt]="module.title">
+            <div class="card-body p-4 d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill px-3 py-2 fw-semibold" [ngClass]="module.badgeClass">{{ module.category }}</span>
+                <span class="fw-bold text-warning small d-flex align-items-center gap-1">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
+                  Nivel {{ module.level }}
+                </span>
+              </div>
+              <h4 class="fw-bold text-dark h5 mb-2">{{ module.title }}</h4>
+              <p class="text-muted small flex-grow-1 mb-4">{{ module.description }}</p>
+
+              <!-- Progress Bar -->
+              <div class="mt-auto">
+                <div class="d-flex justify-content-between small mb-1 fw-semibold">
+                  <span class="text-muted">Progreso</span>
+                  <span class="text-success">{{ module.progress }}%</span>
+                </div>
+                <div class="progress mb-3" style="height: 8px;">
+                  <div class="progress-bar bg-success rounded-pill" role="progressbar" [style.width.%]="module.progress"></div>
+                </div>
+                <button routerLink="/modules" class="btn btn-success w-100 fw-bold rounded-3 py-2">
+                  {{ module.progress > 0 ? 'Continuar Módulo' : 'Iniciar Módulo' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Missions Section -->
+  <section id="missions" class="py-5 bg-success text-white rounded-4 my-5 mx-3 mx-md-5">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        <div class="col-12 col-lg-6">
+          <h2 class="display-6 fw-bold mb-3">Misiones Diarias:<br>Gana recompensas por acciones reales.</h2>
+          <p class="lead text-white-80 mb-4">
+            El aprendizaje no se detiene en la pantalla. Completa misiones físicas para subir de nivel en tu perfil y desbloquear insignias digitales exclusivas.
+          </p>
+
+          <div class="d-flex flex-column gap-3">
+            <div *ngFor="let mission of dailyMissions" class="bg-white text-dark p-3 rounded-4 d-flex align-items-center justify-content-between shadow-sm">
+              <div class="d-flex align-items-center gap-3">
+                <div class="p-3 rounded-3 text-white d-flex align-items-center justify-content-center" [ngClass]="mission.iconBg">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-15h-2v6h6v-2h-4V7z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h5 class="fw-bold text-dark mb-0 fs-6">{{ mission.title }}</h5>
+                  <p class="small text-muted mb-0">{{ mission.description }}</p>
+                </div>
+              </div>
+              <div class="text-end ps-2">
+                <span class="fw-bold text-warning h5 d-block mb-0">+{{ mission.xpReward }}</span>
+                <span class="small text-muted fw-bold">XP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badge Progress Panel -->
+        <div class="col-12 col-lg-6">
+          <div class="bg-white bg-opacity-10 border border-white border-opacity-25 rounded-4 p-4 text-center">
+            <div class="bg-warning text-white rounded-circle p-3 d-inline-flex align-items-center justify-content-center mb-3 shadow" style="width: 80px; height: 80px;">
+              <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+              </svg>
+            </div>
+            <h3 class="h4 fw-bold mb-1">Tu Próxima Insignia</h3>
+            <p class="small text-white-75 mb-4">A solo 2 misiones de obtener "Conservacionista"</p>
+
+            <button routerLink="/missions" class="btn btn-warning text-dark fw-bold px-4 py-3 rounded-3 w-100 shadow">
+              Reclamar Recompensa Diaria
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about-us" class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        <div class="col-12 col-lg-6">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7wtciBL-XVnHaQXzIIHgX1nb3Fgmq6GIysW_RthaUr5fByM-Tilcd25N2w7F2-aM4K2izFpWCNdxfVaZo_sAmJfOKDKmlvJ80Tj67nYr0HomwnhOfY9ujMhrlTlRmAcksiem3htnwGCQMU4GUUg7Zo_ENcrYyUlCTXrRBD5grqBEfMZFy9CzTXfExKgf6FtkZl0s21gka-o4qH1fm0ssq7FJjD8mkHdB_Xltce50pa6FLzeiYgdrj" class="img-fluid rounded-4 shadow-lg w-100 object-fit-cover" alt="Fundación Tecnología con Propósito">
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <div class="bg-success rounded-pill mb-3" style="width: 60px; height: 6px;"></div>
+          <h2 class="fw-bold text-dark mb-2">Sobre nosotros</h2>
+          <h3 class="h4 fw-bold text-success mb-3">Fundación Tecnología con Propósito</h3>
+          <p class="text-muted lead fs-6 mb-4">
+            Somos una organización comprometida con la creación de herramientas digitales que generen un impacto positivo real. EcoAprende nace de la convicción de que la tecnología y la educación son los pilares para un futuro sostenible.
+          </p>
+
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+            <li class="d-flex align-items-center gap-3">
+              <svg width="22" height="22" class="text-success" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              <span class="text-dark fw-medium">Metodologías pedagógicas validadas por expertos.</span>
+            </li>
+            <li class="d-flex align-items-center gap-3">
+              <svg width="22" height="22" class="text-success" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              <span class="text-dark fw-medium">Enfoque en acción comunitaria y local.</span>
+            </li>
+            <li class="d-flex align-items-center gap-3">
+              <svg width="22" height="22" class="text-success" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              <span class="text-dark fw-medium">Tecnología accesible para todas las edades.</span>
+            </li>
+          </ul>
+
+          <button routerLink="/missions" class="btn btn-outline-success fw-bold px-4 py-3 rounded-3">
+            Conoce nuestra misión
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="bg-success text-white rounded-5 p-5 text-center shadow-lg">
+        <h2 class="display-5 fw-bold mb-3">¿Listo para ser un EcoExplorer?</h2>
+        <p class="lead text-white-80 max-w-2xl mx-auto mb-4">
+          Únete a miles de estudiantes que ya están transformando su entorno. La aventura por el planeta comienza hoy.
+        </p>
+        <button routerLink="/home" class="btn btn-light text-success fw-bold btn-lg px-5 py-3 rounded-3 shadow">
+          Empieza Gratis
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white-50 py-5 border-top">
+  <div class="container">
+    <div class="row g-4 pb-4 border-bottom border-secondary mb-4">
+      <div class="col-12 col-md-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <svg class="text-success" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4a1 1 0 001.25 1.25l1.79-.62A8.962 8.962 0 0012 21c4.97 0 9-4.03 9-9 0-4.97-4.03-9-9-9z"/>
+          </svg>
+          <span class="fs-4 fw-bold text-white">EcoAprende</span>
+        </div>
+        <p class="small text-muted mb-0">Transformando la educación ambiental a través del juego y la tecnología social.</p>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <h6 class="text-white fw-bold mb-3">Plataforma</h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+          <li><a href="#modules" class="text-white-50 text-decoration-none">Módulos</a></li>
+          <li><a href="#missions" class="text-white-50 text-decoration-none">Misiones Diarias</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Ranking</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <h6 class="text-white fw-bold mb-3">Institucional</h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+          <li><a href="#about-us" class="text-white-50 text-decoration-none">Sobre la Fundación</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Transparencia</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <h6 class="text-white fw-bold mb-3">Síguenos</h6>
+        <div class="d-flex gap-2">
+          <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </a>
+          <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center small text-muted">
+      <p class="mb-2 mb-sm-0">© 2026 EcoAprende - Fundación Tecnología con Propósito. Todos los derechos reservados.</p>
+      <div class="d-flex gap-3">
+        <a href="#" class="text-white-50 text-decoration-none">Privacidad</a>
+        <a href="#" class="text-white-50 text-decoration-none">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
