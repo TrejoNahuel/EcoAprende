@@ -1,4 +1,4 @@
-import type { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize';
+import type { CreationOptional, InferAttributes, InferCreationAttributes, NonAttribute } from 'sequelize';
 import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { UserRole } from '../types/user-rol.types';
 import { Level } from 'src/levels/models/level.model';
@@ -48,5 +48,5 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare levelId: CreationOptional<number>;
 
   @BelongsTo(() => Level)
-  declare level?: Level;
+  declare level: NonAttribute<Level>;
 }
