@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -27,23 +27,18 @@ interface PlatformStat {
   textColorClass: string;
 }
 
+type LandingSection = 'hero' | 'how-it-works' | 'modules' | 'about-us';
+
 @Component({
   selector: 'app-landing',
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './landing.component.html'
 })
-export class LandingComponent implements OnInit {
-  public isLoggedIn: boolean = true;
+export class LandingComponent {
+  public currentSection: LandingSection = 'hero';
   public userXP: number = 250;
-  public userLevel: number = 12;
   public userProgress: number = 75;
-
-  public userProfile = {
-    name: 'Usuario 1',
-    role: 'student',
-    avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6TjHFC-bJVkkmYN3aSHGlI3T_Vl9WcN_6vpy-kQHTOziNxPyY5jmzYlh5SraRTELrEkn-mc4jdYrNN34xv8hD9YqwMx-9mB0hW44oVfcp2jc8rYJ7arO8OPRdZYW3taql2vWzHgznbFn0LMgVt6hzTLB8Ehj2H9Tyr6xj0UUzsY1u4TFO83TtSwNVQPFOgwFLlwf0kpf1FRT7uCJM_RqRESmoeCFO64PQ_PSmP6fNoyksIT0e4Rt6'
-  };
 
   public platformStats: PlatformStat[] = [
     { value: '150+', label: 'Módulos Interactivos', textColorClass: 'text-success' },
@@ -102,5 +97,7 @@ export class LandingComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {}
+  setCurrentSection(section: LandingSection): void {
+    this.currentSection = section;
+  }
 }

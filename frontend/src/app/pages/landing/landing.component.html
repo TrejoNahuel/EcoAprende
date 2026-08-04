@@ -11,31 +11,34 @@
 
     <!-- Desktop Navigation Links -->
     <nav class="d-none d-md-flex align-items-center gap-4">
-      <a href="#hero" class="fw-semibold text-success text-decoration-none border-bottom border-2 border-success py-1">Inicio</a>
-      <a href="#how-it-works" class="fw-semibold text-secondary text-decoration-none py-1">Cómo funciona</a>
-      <a href="#modules" class="fw-semibold text-secondary text-decoration-none py-1">Módulos</a>
-      <a href="#about-us" class="fw-semibold text-secondary text-decoration-none py-1">Sobre nosotros</a>
+      <a
+        href="#hero"
+        (click)="setCurrentSection('hero')"
+        class="fw-semibold text-decoration-none py-1 {{ currentSection === 'hero' ? 'text-success border-bottom border-2 border-success' : 'text-secondary' }}">
+        Inicio
+      </a>
+
+      <a
+        href="#how-it-works"
+        (click)="setCurrentSection('how-it-works')"
+        class="fw-semibold text-decoration-none py-1 {{ currentSection === 'how-it-works' ? 'text-success border-bottom border-2 border-success' : 'text-secondary' }}">
+        Cómo funciona
+      </a>
+
+      <a
+        href="#modules"
+        (click)="setCurrentSection('modules')"
+        class="fw-semibold text-decoration-none py-1 {{ currentSection === 'modules' ? 'text-success border-bottom border-2 border-success' : 'text-secondary' }}">
+        Módulos
+      </a>
+
+      <a
+        href="#about-us"
+        (click)="setCurrentSection('about-us')"
+        class="fw-semibold text-decoration-none py-1 {{ currentSection === 'about-us' ? 'text-success border-bottom border-2 border-success' : 'text-secondary' }}">
+        Sobre nosotros
+      </a>
     </nav>
-
-    <!-- User Profile & Action Header Items -->
-    <div class="d-flex align-items-center gap-3">
-      <button class="btn btn-light rounded-circle p-2 d-flex align-items-center justify-content-center" title="Favoritos">
-        <svg width="20" height="20" fill="#2c3e50" viewBox="0 0 24 24">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-        </svg>
-      </button>
-
-      <button class="btn btn-light rounded-circle p-2 me-2 d-flex align-items-center justify-content-center" title="Notificaciones">
-        <svg width="20" height="20" fill="#2c3e50" viewBox="0 0 24 24">
-          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-        </svg>
-      </button>
-
-      <!-- Logged In User State -->
-      <div *ngIf="isLoggedIn" class="d-flex align-items-center gap-2 ps-4 border-start">
-        <img [src]="userProfile.avatarUrl" [alt]="userProfile.name" class="rounded-circle border border-2 border-success object-fit-cover" width="40" height="40">
-      </div>
-    </div>
   </div>
 </header>
 
@@ -92,8 +95,8 @@
                 </svg>
               </div>
               <div class="text-start">
-                <p class="fw-bold mb-0 text-dark fs-7">Nivel {{ userLevel }}</p>
-                <small class="text-muted fs-8">{{ userProfile.role }}</small>
+                <p class="fw-bold mb-0 text-dark fs-7">Nivel 12</p>
+                <small class="text-muted fs-8">Estudiante</small>
               </div>
             </div>
 
