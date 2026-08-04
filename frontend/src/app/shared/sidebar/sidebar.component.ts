@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProfileService, ProfileResponse } from '../../services/profile.service';
+import { ProfileService, GetProfileResponse } from '../../services/profile.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,13 +9,12 @@ import { ProfileService, ProfileResponse } from '../../services/profile.service'
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  perfil: ProfileResponse | null = null;
+  profile: GetProfileResponse | null = null;
   constructor(private readonly profileService: ProfileService){}
   
   ngOnInit(){
-    this.profileService.perfil$.subscribe(res => {
-      console.log('📥 Sidebar recibió del BehaviorSubject:', res);
-      this.perfil = res;
+    this.profileService.profile$.subscribe(res => {
+      this.profile = res;
     });
   }
 }

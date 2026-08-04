@@ -5,13 +5,13 @@
 
     <!-- Sección de datos -->
     <div class="my-2 p-3 rounded-4 bg-light border border-opacity-10">
-        @if (perfil) {
+        @if (profile) {
             <div class="user-info">
-                <p class="mb-1 text-truncate text-secondary small fw-medium">{{ perfil.email }}</p>
+                <p class="mb-1 text-truncate text-secondary small fw-medium">{{ profile.email }}</p>
                 <p class="mb-0 text-success fw-bold d-flex align-items-center gap-1">
-                        {{ perfil.level }} 
+                        {{ profile.level.name }} 
                     <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 ms-auto">
-                        {{ perfil.points }} pts
+                        {{ profile.points }} pts
                     </span>
                 </p>
             </div>
