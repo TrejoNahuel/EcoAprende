@@ -34,7 +34,8 @@ export const routes: Routes = [
                 component: HomeStudentComponent,
                 canActivate: [AuthGuard, RoleGuard],
                 data: {
-                    role: 'student'
+                    role: 'student',
+                    title: 'Inicio'
                 }
             },
             {
@@ -42,14 +43,16 @@ export const routes: Routes = [
                 component: HomeTeacherComponent,
                 canActivate: [AuthGuard, RoleGuard],
                 data: {
-                    role: 'teacher'
+                    role: 'teacher',
+                    title: 'Inicio'
                 }
             },
             {
                 path: 'modules',
                 canActivate: [AuthGuard, RoleGuard],
                 data: {
-                    role: 'student'
+                    role: 'student',
+                    title: 'Módulos'
                 },
                 children: [
                     { path: '', component: AllModulesComponent },
