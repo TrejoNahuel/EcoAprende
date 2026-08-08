@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { ModulesModule } from './modules/modules.module';
 import { LevelModule } from './levels/level.module';
 import { MissionsModule } from './missions/missions.module';
+import { PointsModule } from './points/points.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { MissionsModule } from './missions/missions.module';
     ModulesModule,
     LevelModule,
     MissionsModule,
+    PointsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
