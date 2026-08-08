@@ -25,6 +25,7 @@ import { PointsModule } from './points/points.module';
       database: process.env.DB_NAME || 'ecoaprende',
       autoLoadModels: true,
       synchronize: true,
+      // sync: { force: true },
     }),
     CryptoModule,
     UsersModule,
