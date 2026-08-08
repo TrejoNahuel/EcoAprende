@@ -1,5 +1,6 @@
 import type { ModelCtor } from 'sequelize-typescript';
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { Op } from 'sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './models/user.model';
 import { InjectModel } from '@nestjs/sequelize';
@@ -17,6 +18,7 @@ export interface UserProfile {
     name: string;
     minPoints: number;
   };
+  nextLevel: { name: string; minPoints: number } | null;
 }
 
 @Injectable()
@@ -25,6 +27,7 @@ export class UsersService {
     @InjectModel(User) private readonly userModel: ModelCtor<User>,
     @InjectModel(UserMission)
     private readonly userMissionModel: typeof UserMission,
+    @InjectModel(Level) private readonly levelModel: ModelCtor<Level>,
   ) {}
 
   async findByEmail(email: string): Promise<User | null> {
@@ -50,6 +53,13 @@ export class UsersService {
       throw new NotFoundException('Usuario no encontrado');
     }
 
+    const currentMinPoints = user.level?.minPoints ?? 0;
+
+    const nextLevel = await this.levelModel.findOne({
+      where: { minPoints: { [Op.gt]: currentMinPoints } },
+      order: [['minPoints', 'ASC']],
+    });
+
     return {
       id: user.id,
       email: user.email,
@@ -60,6 +70,9 @@ export class UsersService {
         name: user.level.name,
         minPoints: user.level.minPoints,
       },
+      nextLevel: nextLevel
+        ? { name: nextLevel.name, minPoints: nextLevel.minPoints }
+        : null,
     };
   }
   async getUserBadges(userId: number) {
