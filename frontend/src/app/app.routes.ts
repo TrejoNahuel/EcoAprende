@@ -9,6 +9,7 @@ import { HomeStudentComponent } from './pages/student/home-student/home-student.
 import { HomeTeacherComponent } from './pages/teacher/home-teacher/home-teacher.component';
 import { AllModulesComponent } from './pages/student/all-modules/all-modules.component';
 import { LessonsComponent } from './pages/student/lessons/lessons.component';
+import { MissionsComponent } from './pages/missions/missions.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
@@ -47,6 +48,12 @@ export const routes: Routes = [
                     title: 'Inicio'
                 }
             },
+            {   path: 'missions', 
+                component: MissionsComponent,
+                data: {            
+                    title: 'Misiones'
+                },    
+            },
             {
                 path: 'modules',
                 canActivate: [AuthGuard, RoleGuard],
@@ -65,5 +72,4 @@ export const routes: Routes = [
         path: 'home', 
         component: HomeComponent
     },
-    
 ];
