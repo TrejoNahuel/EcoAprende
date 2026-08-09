@@ -11,11 +11,12 @@ import { AllModulesComponent } from './pages/student/all-modules/all-modules.com
 import { LessonsComponent } from './pages/student/lessons/lessons.component';
 import { MissionsComponent } from './pages/missions/missions.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: HomeComponent,
+        component: LandingComponent,
         pathMatch: 'full'
     },
     {
