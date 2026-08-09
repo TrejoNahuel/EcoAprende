@@ -28,16 +28,40 @@ export const routes: Routes = [
     },
     {
         path: '',
-        canActivate: [AuthGuard],
         component: MainLayoutComponent,
         children: [
-            { path: 'home', component: HomeComponent },
-            { path: 'missions', component: MissionsComponent },
+            {
+                path: 'home-student',
+                component: HomeStudentComponent,
+                canActivate: [AuthGuard, RoleGuard],
+                data: {
+                    role: 'student',
+                    title: 'Inicio'
+                }
+            },
+            {
+                path: 'home-teacher',
+                component: HomeTeacherComponent,
+                canActivate: [AuthGuard, RoleGuard],
+                data: {
+                    role: 'teacher',
+                    title: 'Inicio'
+                }
+            },
+            {   path: 'missions', 
+                canActivate: [AuthGuard, RoleGuard],
+                component: MissionsComponent,
+                data: {          
+                    role: 'student',  
+                    title: 'Misiones'
+                },    
+            },
             {
                 path: 'modules',
-                canActivate: [RoleGuard],
+                canActivate: [AuthGuard, RoleGuard],
                 data: {
-                    role: 'student'
+                    role: 'student',
+                    title: 'Módulos'
                 },
                 children: [
                     { path: '', component: AllModulesComponent },
@@ -47,19 +71,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'home-student',
-        component: HomeStudentComponent,
-        canActivate: [AuthGuard, RoleGuard],
-        data: {
-            role: 'student'
-        }
-    },
-    {
-        path: 'home-teacher',
-        component: HomeTeacherComponent,
-        canActivate: [AuthGuard, RoleGuard],
-        data: {
-            role: 'teacher'
-        }
+        path: 'home', 
+        component: HomeComponent
     },
 ];

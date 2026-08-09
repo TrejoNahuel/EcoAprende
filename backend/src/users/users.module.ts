@@ -8,7 +8,7 @@ import { Level } from '../levels/models/level.model';
 import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
-  imports: [SequelizeModule.forFeature([User, UserMission, Mission])],
+  imports: [SequelizeModule.forFeature([User, UserMission, Mission, Level])],
   controllers: [UsersController],
   providers: [UsersService],
   exports: [UsersService],

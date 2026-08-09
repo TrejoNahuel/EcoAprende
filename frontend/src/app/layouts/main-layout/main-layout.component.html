@@ -1,102 +1,13 @@
 <div class="container-fluid vh-100 overflow-hidden">
   <div class="row h-100">
-    
     <!-- SIDEBAR (Izquierda) -->
     <nav class="col-md-3 col-lg-2 d-md-flex bg-light border-end p-3 flex-column justify-content-between">
-      <div class="flex-grow">
-        <!-- Perfil Usuario Sidebar -->
-        <div class="mb-4 px-2">
-          <h6 class="fw-bold text-success mb-0">EcoExplorer</h6>
-          <small class="text-muted">Nivel 12 • 2,450 XP</small>
-        </div>
-
-        <!-- Menú de Navegación -->
-        <ul class="nav flex-column gap-1">
-          <li class="nav-item">
-            <a class="nav-link text-dark" routerLink="/home" routerLinkActive="active bg-success text-white rounded-3">
-              Inicio
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark active bg-success text-white rounded-3" routerLink="/modules" routerLinkActive="active bg-success text-white rounded-3">
-              Módulos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" routerLink="/missions" [queryParams]="{ status: 'available' }" routerLinkActive="active bg-success text-white rounded-3">
-              Misiones
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" routerLink="/progress" routerLinkActive="active bg-success text-white rounded-3">
-              Progreso
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" routerLink="/settings" routerLinkActive="active bg-success text-white rounded-3">
-              Configuración
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Widget Inferior Sidebar (Misión Diaria) -->
-      <div class="card bg-warning-subtle border-0 p-3 rounded-4" style="background-color: #b95d32 !important; color: white;">
-        <small class="fw-bold">Misión del día</small>
-        <p class="small mb-2">¡Planta 5 árboles virtuales hoy!</p>
-        <button class="btn btn-light btn-sm text-dark fw-bold rounded-pill">
-          Comenzar misión
-        </button>
-      </div>
+      <app-sidebar></app-sidebar>
     </nav>
-
     <!-- CONTENIDO PRINCIPAL (Derecha) -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex flex-column h-100 bg-white">
-      
       <!-- HEADER -->
-      <header class="navbar navbar-expand-lg py-3 border-bottom mb-4 px-3">
-        <!-- Título dinámico -->
-        <span class="navbar-brand mb-0 h5 fw-bold text-success">
-          Título de la vista
-        </span>
-
-        <!-- Buscador y acciones derechas -->
-        <div class="d-flex align-items-center ms-auto gap-3">
-          <!-- Input de búsqueda condicional -->
-          <div class="input-group">
-            <span class="input-group-text bg-light border-end-0 rounded-start-pill">
-              <!-- SVG Lupa -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-muted" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-              </svg>
-            </span>
-            <input type="text" class="form-control bg-light border-start-0 rounded-end-pill" placeholder="Buscar temas...">
-          </div>
-
-          <!-- Botón Estrella -->
-          <button class="btn btn-light rounded-circle d-flex align-items-center justify-content-center p-0" style="min-width: 38px; height: 38px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792c-.213-.416-.73-.416-.944 0l-2.22 4.493-4.898.696c-.442.062-.612.636-.282.95l3.522 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5,.5 0 0 0-.461 0z"/>
-            </svg>
-          </button>
-
-          <!-- Botón Campana -->
-          <button class="btn btn-light rounded-circle position-relative d-flex align-items-center justify-content-center p-0" style="min-width: 38px; height: 38px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM142.2 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.2 6z"/>
-            </svg>
-          </button>
-
-          <!-- Foto de perfil -->
-          <img
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"
-            alt="Foto de perfil"
-            class="rounded-circle object-fit-cover"
-            style="min-width: 40px; height: 40px;"
-          >
-        </div>
-      </header>
-
+      <app-header [title]="currentTitle"></app-header>
       <!-- ÁREA DINÁMICA -->
       <div class="flex-grow-1 overflow-auto px-2">
         <router-outlet></router-outlet>

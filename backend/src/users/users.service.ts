@@ -17,7 +17,7 @@ export interface UserProfile {
     id: number;
     name: string;
     minPoints: number;
-  };
+  }
   nextLevel: { name: string; minPoints: number } | null;
 }
 

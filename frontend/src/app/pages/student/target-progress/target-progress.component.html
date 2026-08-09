@@ -1,0 +1,24 @@
+<div class="bg-white rounded-4 border shadow-sm p-4">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-2 fw-semibold fs-6 m-0">
+            ⚡ {{points}} XP
+        </span>
+        <span class="text-secondary small m-0"> {{ nextPoints - points }} / {{nextPoints}} XP</span>
+    </div>
+    <h6 class="fw-bold m-0 fs-5 mt-3">{{levelName}}</h6>
+    <br>
+
+    <!-- Grafiquito de barras (Usando utilidades de padding de Bootstrap 'pt-*' para la altura) -->
+    <!-- <div class="d-flex align-items-end gap-1 mt-4">
+        <div class="flex-grow-1 bg-secondary bg-opacity-25 rounded-top pt-3 m-0"></div>
+        <div class="flex-grow-1 bg-success bg-opacity-25 rounded-top pt-4 m-0"></div>
+        <div class="flex-grow-1 bg-success bg-opacity-25 rounded-top pt-2 m-0"></div>
+        <div class="flex-grow-1 bg-success rounded-top pt-5 m-0"></div>
+        <div class="flex-grow-1 bg-success bg-opacity-25 rounded-top pt-3 m-0"></div>
+        <div class="flex-grow-1 bg-success rounded-top pt-5 m-0"></div>
+      </div> -->
+    <div class="progress" style="height: 8px;">
+        <div class="progress-bar bg-success" role="progressbar" [style.width.%]="porcentaje"
+            [attr.aria-valuenow]="points" [attr.aria-valuemin]="minPoints" [attr.aria-valuemax]="nextPoints"></div>
+    </div>
+</div>

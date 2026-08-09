@@ -1,0 +1,50 @@
+<div class="flex-grow">
+    <!-- Perfil Usuario Sidebar -->
+    <div class="mb-4 px-2">
+        <h6 class="fw-bold text-success mb-0">EcoExplorer</h6>
+        <small class="text-muted">{{levelName}} • {{points}} XP</small>
+    </div>
+
+    <!-- Menú de Navegación -->
+    <ul class="nav flex-column gap-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/home-student"
+                routerLinkActive="active bg-success text-white rounded-3">
+                Inicio
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark active bg-success text-white rounded-3" routerLink="/modules"
+                routerLinkActive="active bg-success text-white rounded-3">
+                Módulos
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/missions" [queryParams]="{ status: 'available' }"
+                routerLinkActive="active bg-success text-white rounded-3">
+                Misiones
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/progress"
+                routerLinkActive="active bg-success text-white rounded-3">
+                Progreso
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/settings"
+                routerLinkActive="active bg-success text-white rounded-3">
+                Configuración
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Widget Inferior Sidebar (Misión Diaria) -->
+<div class="card bg-warning-subtle border-0 p-3 rounded-4" style="background-color: #b95d32 !important; color: white;">
+    <small class="fw-bold">Misión del día</small>
+    <p class="small mb-2">¡Planta 5 árboles virtuales hoy!</p>
+    <button class="btn btn-light btn-sm text-dark fw-bold rounded-pill">
+        Comenzar misión
+    </button>
+</div>
