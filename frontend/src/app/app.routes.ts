@@ -49,8 +49,10 @@ export const routes: Routes = [
                 }
             },
             {   path: 'missions', 
+                canActivate: [AuthGuard, RoleGuard],
                 component: MissionsComponent,
-                data: {            
+                data: {          
+                    role: 'student',  
                     title: 'Misiones'
                 },    
             },
