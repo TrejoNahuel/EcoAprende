@@ -4,11 +4,12 @@ import { NgClass } from '@angular/common';
 import { AddMissionCardComponent } from './add-mission-card.component';
 import { MissionCardComponent } from './mission-card.component';
 import { MissionService, Mission } from '../../services/mission.service';
+import { TargetProgressComponent } from '../student/target-progress/target-progress.component';
 
 type MissionStatus = 'available' | 'completed';
 
 @Component({
-  imports: [AddMissionCardComponent, MissionCardComponent, NgClass],
+  imports: [AddMissionCardComponent, MissionCardComponent, NgClass, TargetProgressComponent],
   standalone: true,
   selector: 'app-missions',
   templateUrl: './missions.component.html',
@@ -18,9 +19,9 @@ export class MissionsComponent implements OnInit {
   completedMissions: Mission[] = [];
 
   constructor(
-    private missionService: MissionService,
-    private route: ActivatedRoute,
-    private router: Router
+    private readonly missionService: MissionService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {}
 
   get selectedMissionStatus(): MissionStatus {
