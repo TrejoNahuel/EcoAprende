@@ -4,11 +4,12 @@ import { NgClass } from '@angular/common';
 import { AddMissionCardComponent } from './add-mission-card.component';
 import { MissionCardComponent } from './mission-card.component';
 import { MissionService, Mission } from '../../services/mission.service';
+import { TargetProgressComponent } from '../student/target-progress/target-progress.component';
 
 type MissionStatus = 'available' | 'completed';
 
 @Component({
-  imports: [AddMissionCardComponent, MissionCardComponent, NgClass],
+  imports: [AddMissionCardComponent, MissionCardComponent, NgClass, TargetProgressComponent],
   standalone: true,
   selector: 'app-missions',
   templateUrl: './missions.component.html',
