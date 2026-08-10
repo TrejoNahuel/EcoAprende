@@ -14,14 +14,22 @@ export class TargetProgressComponent {
   porcentaje: number = 0;
   nextPoints: number = 0;
   minPoints: number = 0;
+  isMaxLevel: boolean = false;
+
   constructor(private readonly profileService: ProfileService){}
 
   ngOnInit(){
     this.profileService.profile$.subscribe(res => {
+      const hasProfile = !!res;
+
+      if (!hasProfile) return;
+
+      this.isMaxLevel = !res.nextLevel
+
       this.levelName = res.level.name;
       this.points = res.points;
       this.minPoints = res.level.minPoints;
-      this.nextPoints = res.nextLevel.minPoints;
+      this.nextPoints = this.isMaxLevel ? res.level.minPoints : res.nextLevel!.minPoints;
       this.porcentaje = (this.points - this.minPoints) / (this.nextPoints - this.minPoints) * 100;
     });
   }
