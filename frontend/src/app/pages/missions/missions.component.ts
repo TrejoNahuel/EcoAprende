@@ -4,12 +4,11 @@ import { NgClass } from '@angular/common';
 import { AddMissionCardComponent } from './add-mission-card.component';
 import { MissionCardComponent } from './mission-card.component';
 import { MissionService, Mission } from '../../services/mission.service';
-import { TargetProgressComponent } from '../student/target-progress/target-progress.component';
 
 type MissionStatus = 'available' | 'completed';
 
 @Component({
-  imports: [AddMissionCardComponent, MissionCardComponent, NgClass, TargetProgressComponent],
+  imports: [AddMissionCardComponent, MissionCardComponent, NgClass],
   standalone: true,
   selector: 'app-missions',
   templateUrl: './missions.component.html',
@@ -19,15 +18,14 @@ export class MissionsComponent implements OnInit {
   completedMissions: Mission[] = [];
 
   constructor(
-    private readonly missionService: MissionService,
-    private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private missionService: MissionService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   get selectedMissionStatus(): MissionStatus {
     const defaultStatus = 'available' as MissionStatus;
     const status: MissionStatus = (this.route.snapshot.queryParamMap.get('status') as MissionStatus) || defaultStatus;
-
     return status;
   }
 
@@ -53,5 +51,10 @@ export class MissionsComponent implements OnInit {
       queryParams: { status },
       queryParamsHandling: 'merge',
     });
+  }
+
+  onMissionCompleted(mission: Mission): void {
+    this.availableMissions = this.availableMissions.filter((m) => m.id !== mission.id);
+    this.completedMissions = [mission, ...this.completedMissions];
   }
 }
