@@ -17,6 +17,10 @@ export class SidebarComponent {
 
   ngOnInit(){
     this.profileService.profile$.subscribe(res => {
+      const hasProfile = !!res;
+
+      if (!hasProfile) return;
+
       this.levelName = res.level.name;
       this.points = res.points;
     });
