@@ -7,6 +7,8 @@ import { tap } from 'rxjs/operators';
 export type UserRole = 'student' | 'admin' | 'teacher';
 
 export interface RegisterRequest {
+  name: string;
+  lastname: string;
   email: string;
   password: string;
   role: UserRole;

@@ -10,6 +10,8 @@ import { Mission } from '../missions/models/mission.model';
 
 export interface UserProfile {
   id: number;
+  name: string;
+  lastname: string;
   email: string;
   role: string;
   points: number;
@@ -34,8 +36,10 @@ export class UsersService {
     return this.userModel.findOne({ where: { email } });
   }
 
-  async create({ email, password, role }: CreateUserDto): Promise<User> {
+  async create({ name, lastname, email, password, role }: CreateUserDto): Promise<User> {
     return this.userModel.create({
+      name,
+      lastname,
       email,
       password,
       role,
@@ -62,6 +66,8 @@ export class UsersService {
 
     return {
       id: user.id,
+      name: user.name,
+      lastname: user.lastname,
       email: user.email,
       role: user.role,
       points: user.points,

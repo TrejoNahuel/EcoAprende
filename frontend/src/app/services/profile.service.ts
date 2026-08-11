@@ -6,6 +6,8 @@ import { Observable, tap, forkJoin, BehaviorSubject } from "rxjs";
 // 1. Actualizamos la interfaz sumando el nextLevel
 export interface GetProfileResponse {
   id: number;
+  name: string;
+  lastname: string;
   email: string;
   role: string;
   points: number;
