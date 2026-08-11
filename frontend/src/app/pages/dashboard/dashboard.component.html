@@ -27,6 +27,36 @@
     </div>
     <div class="col-12">
       <!-- Aquí irá la Vitrina de Insignias -->
+       <div class="card shadow-sm border-0 bg-light mt-2">
+        <div class="card-body">
+          <h5 class="card-title text-success mb-4">🏅 Vitrina de Insignias</h5>
+
+          <!-- Nos suscribimos al observable de insignias -->
+          <ng-container *ngIf="badges$ | async as badges">
+            
+            <!-- Caso A: El usuario TIENE insignias ganadas -->
+            <div class="d-flex flex-wrap gap-3" *ngIf="badges.length > 0; else noBadges">
+              <span *ngFor="let badge of badges" class="badge text-bg-success fs-6 p-3 shadow-sm rounded-pill d-flex align-items-center">
+                <span class="fs-4 me-2">🏅</span> 
+                <div class="text-start">
+                  <span class="d-block">{{ badge.name }}</span>
+                  <small class="fw-light" *ngIf="badge.earnedAt" style="font-size: 0.75rem;">
+                    {{ badge.earnedAt | date:'shortDate' }}
+                  </small>
+                </div>
+              </span>
+            </div>
+
+            <!-- Caso B: El usuario NO TIENE insignias (Estado vacío) -->
+            <ng-template #noBadges>
+              <div class="alert alert-warning border-0 rounded-3 text-center mb-0" role="alert">
+                Todavía no desbloqueaste insignias — completá misiones para ganarlas.
+              </div>
+            </ng-template>
+
+          </ng-container>
+        </div>
+      </div>
     </div>
   </div>
 </div>

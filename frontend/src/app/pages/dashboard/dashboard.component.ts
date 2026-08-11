@@ -11,9 +11,11 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class DashboardComponent implements OnInit {
   profile$;
+  badges$;
 
   constructor(private profileService: ProfileService) {
     this.profile$ = this.profileService.profile$;
+    this.badges$ = this.profileService.badges$;
   }
 
   ngOnInit(): void {
