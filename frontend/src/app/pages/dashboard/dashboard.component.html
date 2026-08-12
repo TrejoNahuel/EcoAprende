@@ -1,0 +1,41 @@
+<div class="container mt-4" *ngIf="profile$ | async as profile; else loading">
+  <h2 class="mb-4">Panel del Estudiante</h2>
+  
+  <div class="card shadow-sm mb-4 border-0 bg-light">
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="card-title text-success mb-1">¡Hola, {{ profile.email }}!</h5>
+        <p class="text-muted mb-0">Miembro EcoAprende</p>
+      </div>
+      
+      <!-- Badges de Bootstrap para Nivel y Puntos -->
+      <div class="text-end">
+        <span class="badge rounded-pill bg-success fs-6 me-2 px-3 py-2">
+          ⭐ {{ profile.level.name }}
+        </span>
+        <span class="badge rounded-pill bg-primary fs-6 px-3 py-2">
+          ⚡ {{ profile.points }} XP
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedores preparados para las próximas tareas (T056 y T057) -->
+  <div class="row">
+    <div class="col-12 mb-4">
+      <!-- Aquí irá el componente de Progreso (TargetProgress) -->
+    </div>
+    <div class="col-12">
+      <!-- Aquí irá la Vitrina de Insignias -->
+    </div>
+  </div>
+</div>
+
+<!-- Pantalla de carga mientras responde el backend -->
+<ng-template #loading>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-success" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+</ng-template>
