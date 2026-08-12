@@ -1,0 +1,65 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: ecoaprende-db-dev
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ecoaprende
+      MYSQL_USER: ecoaprende
+      MYSQL_PASSWORD: ecoaprende
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - ecoaprende
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: dockerfile.dev
+    container_name: ecoaprende-backend-dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: ecoaprende
+      DB_PASS: ecoaprende
+      DB_NAME: ecoaprende
+      JWT_SECRET: dev-only-secret
+      JWT_EXPIRATION: 1d
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      - db
+    command:
+      npm run start:dev
+    networks:
+      - ecoaprende
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile.dev
+    container_name: ecoaprende-frontend-dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    command:
+      npm start -- --host 0.0.0.0
+    depends_on:
+      - backend
+    networks:
+      - ecoaprende
+
+
+volumes:
+  mysql_data:
+networks:
+  ecoaprende:
