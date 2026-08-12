@@ -8,6 +8,7 @@ import { PointsController } from './points.controller';
 @Module({
   imports: [SequelizeModule.forFeature([User, Level])],
   providers: [PointsService],
-  controllers: [PointsController]
+  controllers: [PointsController],
+  exports: [PointsService]
 })
 export class PointsModule {}

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Mission, MissionService } from '../../services/mission.service';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-mission-card',
@@ -93,7 +94,7 @@ export class MissionCardComponent {
     btnClass: 'btn-outline-success'
   };
 
-  constructor(private readonly missionService: MissionService) {}
+  constructor(private readonly missionService: MissionService, private readonly profileService: ProfileService) {}
 
   completeMission(): void {
     if (this.isCompleting) {
@@ -107,6 +108,7 @@ export class MissionCardComponent {
       next: () => {
         this.isCompleting = false;
         this.completed.emit(this.mission);
+        this.profileService.getProfile().subscribe();
       },
       error: (err: HttpErrorResponse) => {
         this.isCompleting = false;
