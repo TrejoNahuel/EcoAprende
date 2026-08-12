@@ -2,7 +2,7 @@ import type { ModelCtor } from 'sequelize-typescript';
 import type { AddPointsResponse } from './types/add-points-response.type';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Op } from 'sequelize';
+import { Op, Transaction } from 'sequelize';
 import { User } from '../users/models/user.model';
 import { Level } from '../levels/models/level.model';
 
@@ -13,8 +13,13 @@ export class PointsService {
     @InjectModel(Level) private readonly levelModel: ModelCtor<Level>,
   ) {}
 
-  async addPoints(userId: number, points: number): Promise<AddPointsResponse> {
-    const user = await this.userModel.findByPk(userId);
+  // Agregamos el parámetro transaction
+  async addPoints(
+    userId: number,
+    points: number,
+    transaction?: Transaction,
+  ): Promise<AddPointsResponse> {
+    const user = await this.userModel.findByPk(userId, { transaction });
 
     if (!user) {
       throw new NotFoundException('Usuario no encontrado');
@@ -29,6 +34,7 @@ export class PointsService {
         },
       },
       order: [['minPoints', 'DESC']],
+      transaction, // Pasamos la transacción aquí también
     });
 
     if (!newLevel) {
@@ -39,7 +45,7 @@ export class PointsService {
 
     user.levelId = newLevel.id;
 
-    await user.save();
+    await user.save({ transaction }); // Guardamos asegurando la transacción
 
     return {
       totalPoints: user.points,
