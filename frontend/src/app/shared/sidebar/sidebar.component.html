@@ -3,6 +3,7 @@
     <!-- Perfil Usuario Sidebar -->
     <div class="mb-4 px-2">
         <h6 class="fw-bold text-success mb-0">EcoExplorer</h6>
+        <h6 class="fw-bold text-dark mt-2 mb-0">{{name}} {{lastname}}</h6>
         <small class="text-muted">{{levelName}} • {{points}} XP</small>
     </div>
 
@@ -33,12 +34,6 @@
                 </a>
                 <a class="d-none" routerLink="/missions" [queryParams]="{ status: 'completed' }"></a>
             </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" routerLink="/progress"
-                routerLinkActive="active bg-success text-white rounded-3">
-                Progreso
-            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" routerLink="/settings"

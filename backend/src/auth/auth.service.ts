@@ -20,6 +20,8 @@ export class AuthService {
   ) {}
 
   async registerUser({
+    name,
+    lastname,
     email,
     password,
     role,
@@ -33,12 +35,14 @@ export class AuthService {
     const hashedPassword = this.cryptoService.hashPassword(password);
 
     const createdUser = await this.usersService.create({
+      name,
+      lastname,
       email,
       password: hashedPassword,
       role,
     });
 
-    const payload = { sub: createdUser.id, email: createdUser.email, role: createdUser.role };
+    const payload = { sub: createdUser.id, name: createdUser.name, lastname: createdUser.lastname , email: createdUser.email, role: createdUser.role };
 
     return {
       accessToken: this.jwtService.sign(payload),

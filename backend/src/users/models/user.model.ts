@@ -17,6 +17,16 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare id: CreationOptional<number>;
 
   @Column({
+    allowNull: false,
+  })
+  declare name: string;
+
+  @Column({
+    allowNull: false,
+  })
+  declare lastname: string;
+  
+  @Column({
     unique: true,
     allowNull: false,
   })
