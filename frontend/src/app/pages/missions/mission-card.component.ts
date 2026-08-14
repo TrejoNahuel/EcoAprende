@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Mission, MissionService } from '../../services/mission.service';
-import { ProfileService } from '../../services/profile.service';
+import { CompleteMissionResponse, Mission, MissionService } from '../../services/mission.service';
 
 @Component({
   selector: 'app-mission-card',
@@ -74,7 +73,7 @@ import { ProfileService } from '../../services/profile.service';
 export class MissionCardComponent {
   @Input({ required: true }) mission!: Mission;
   @Input() status: 'available' | 'completed' = 'available';
-  @Output() completed = new EventEmitter<Mission>();
+  @Output() completedMission = new EventEmitter<CompleteMissionResponse>();
 
   isCompleting = false;
   errorMessage: string | null = null;
@@ -105,9 +104,9 @@ export class MissionCardComponent {
     this.errorMessage = null;
 
     this.missionService.completeMission(this.mission.id).subscribe({
-      next: () => {
+      next: (response) => {
         this.isCompleting = false;
-        this.completed.emit(this.mission);
+        this.completedMission.emit(response);
       },
       error: (err: HttpErrorResponse) => {
         this.isCompleting = false;

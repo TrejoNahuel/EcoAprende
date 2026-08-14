@@ -24,7 +24,7 @@
     @if (selectedMissionStatus === 'available') {
       @for (mission of availableMissions; track mission.id) {
         <div class="col-12 col-md-6 col-lg-4">
-          <app-mission-card [mission]="mission" status="available" (completed)="onMissionCompleted($event)"></app-mission-card>
+          <app-mission-card [mission]="mission" status="available" (completedMission)="onMissionCompleted($event)"></app-mission-card>
         </div>
       } @empty {
         <div class="col-12 text-center text-secondary py-4">
