@@ -1,16 +1,15 @@
 <div class="container-fluid vh-100 overflow-hidden">
   <div class="row h-100">
-    <!-- SIDEBAR (Izquierda) -->
-    <app-sidebar class="col-md-3 col-lg-2 d-md-flex p-3 bg-light border-end"></app-sidebar>
+    <app-sidebar class="col-md-3 col-lg-2 d-none d-md-flex p-3 bg-light border-end"></app-sidebar>
 
-    <!-- CONTENIDO PRINCIPAL (Derecha) -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex flex-column h-100 bg-white">
-      <!-- HEADER -->
+    <main class="col-12 col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex flex-column h-100 bg-white">
       <app-header [title]="currentTitle"></app-header>
-      <!-- ÁREA DINÁMICA -->
-      <div class="flex-grow-1 overflow-auto px-2">
+      
+      <div class="flex-grow-1 overflow-auto px-2 pb-5 pb-md-0">
         <router-outlet></router-outlet>
       </div>
     </main>
+
+    <app-mobile-menu></app-mobile-menu>
   </div>
 </div>
