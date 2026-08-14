@@ -1,5 +1,5 @@
 import type { CreationOptional, InferAttributes, InferCreationAttributes, NonAttribute } from 'sequelize';
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany, AllowNull } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import { UserMission } from '../../missions/models/user-mission.model';
 import { UserRole } from '../types/user-rol.types';
 import { Level } from '../../levels/models/level.model';

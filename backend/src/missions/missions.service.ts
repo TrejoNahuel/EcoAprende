@@ -2,7 +2,7 @@ import type { ModelCtor } from 'sequelize-typescript';
 import type { FindUserMissionsResponse } from './types/find-user-missions-response.type';
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { PointsService } from 'src/points/points.service';
+import { PointsService } from '../points/points.service';
 
 // 1. Importamos AMBOS modelos correctamente
 import { UserMission } from './models/user-mission.model';

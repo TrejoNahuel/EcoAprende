@@ -94,7 +94,7 @@ export class MissionCardComponent {
     btnClass: 'btn-outline-success'
   };
 
-  constructor(private readonly missionService: MissionService, private readonly profileService: ProfileService) {}
+  constructor(private readonly missionService: MissionService) {}
 
   completeMission(): void {
     if (this.isCompleting) {
@@ -108,7 +108,6 @@ export class MissionCardComponent {
       next: () => {
         this.isCompleting = false;
         this.completed.emit(this.mission);
-        this.profileService.getProfile().subscribe();
       },
       error: (err: HttpErrorResponse) => {
         this.isCompleting = false;
