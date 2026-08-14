@@ -2,6 +2,7 @@ import type { ModelCtor } from 'sequelize-typescript';
 import type { FindUserMissionsResponse } from './types/find-user-missions-response.type';
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { PointsService } from '../points/points.service';
 
 // 1. Importamos AMBOS modelos correctamente
 import { UserMission } from './models/user-mission.model';
@@ -13,6 +14,7 @@ export class MissionsService {
     // 2. Inyectamos los DOS modelos por separado y con sus nombres correctos
     @InjectModel(Mission) private readonly missionModel: ModelCtor<Mission>,
     @InjectModel(UserMission) private readonly userMissionModel: typeof UserMission,
+    private readonly pointService: PointsService
   ) {}
 
   async findUserMissions(userId: number): Promise<FindUserMissionsResponse> {
@@ -66,6 +68,8 @@ export class MissionsService {
       missionId,
       completedAt,
     });
+
+    await this.pointService.addPoints(userId, mission.points);
 
     // 4. Retornar los datos de éxito
     return {

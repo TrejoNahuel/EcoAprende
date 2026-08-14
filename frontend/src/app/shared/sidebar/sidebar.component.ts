@@ -10,6 +10,8 @@ import { ProfileService } from '../../services/profile.service';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  name: string = '';
+  lastname: string = '';
   levelName: string = '';
   points: number = 0;
   
@@ -21,6 +23,8 @@ export class SidebarComponent {
 
       if (!hasProfile) return;
 
+      this.name = res.name;
+      this.lastname = res.lastname;
       this.levelName = res.level.name;
       this.points = res.points;
     });

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Mission, MissionService } from '../../services/mission.service';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-mission-card',

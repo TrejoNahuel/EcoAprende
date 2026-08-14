@@ -2,6 +2,14 @@ import { IsEmail, IsEnum, IsNotEmpty, IsString, Matches, MinLength } from 'class
 import { UserRole } from '../../users/types/user-rol.types';
 
 export class RegisterUserDto {
+  @IsString({ message: 'El nombre debe ser una cadena de texto.' })
+  @IsNotEmpty({ message:"El nombre es obligatorio" })
+  name!: string;
+
+  @IsString({ message: "El apellido debe ser una cadena de texto." })
+  @IsNotEmpty({ message: "El apellido es obligatorio" })
+  lastname!: string;
+
   @IsString({ message: 'El email debe ser una cadena de texto.' })
   @IsEmail({}, { message: 'El correo electrónico no tiene un formato válido.' })
   @IsNotEmpty({ message: 'El correo electrónico es obligatorio.' })

@@ -71,12 +71,12 @@ export const routes: Routes = [
           { path: ':id/lessons', component: LessonsComponent },
         ],
       },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+      },
     ],
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'home',
