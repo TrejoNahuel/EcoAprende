@@ -7,6 +7,7 @@ import { MissionService, Mission, CompleteMissionResponse } from '../../services
 import { TargetProgressComponent } from '../student/target-progress/target-progress.component';
 
 type MissionStatus = 'available' | 'completed';
+type MissionCompletionResult = { message: string };
 
 @Component({
   imports: [AddMissionCardComponent, MissionCardComponent, NgClass, TargetProgressComponent],
@@ -17,6 +18,7 @@ type MissionStatus = 'available' | 'completed';
 export class MissionsComponent implements OnInit {
   availableMissions: Mission[] = [];
   completedMissions: Mission[] = [];
+  missionCompletionResult: MissionCompletionResult | null = null;
 
   constructor(
     private missionService: MissionService,
@@ -54,6 +56,10 @@ export class MissionsComponent implements OnInit {
     });
   }
 
+  closeMissionCompletionModal(): void {
+    this.missionCompletionResult = null;
+  }
+
   onMissionCompleted(response: CompleteMissionResponse): void {
     const completedMissionId = response.missionId
 
@@ -69,6 +75,6 @@ export class MissionsComponent implements OnInit {
       this.completedMissions = [completedMission, ...this.completedMissions];
     }
 
-    alert(`¡Ganaste ${response.points} puntos!`);
+    this.missionCompletionResult = { message: `¡Ganaste ${response.points} puntos!` }
   }
 }
