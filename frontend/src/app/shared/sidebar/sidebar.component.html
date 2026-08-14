@@ -1,4 +1,5 @@
-<div class="flex-grow">
+<nav class="d-flex flex-column justify-content-between h-100 w-100">
+  <div>
     <!-- Perfil Usuario Sidebar -->
     <div class="mb-4 px-2">
         <h6 class="fw-bold text-success mb-0">EcoExplorer</h6>
@@ -20,23 +21,17 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark active bg-success text-white rounded-3" routerLink="/modules"
+            <a class="nav-link text-dark" routerLink="/modules"
                 routerLinkActive="active bg-success text-white rounded-3">
                 Módulos
             </a>
         </li>
         <li class="nav-item">
-            <!-- El contenedor o elemento que lleva el routerLinkActive principal -->
             <div routerLinkActive="active bg-success text-white rounded-3" [routerLinkActiveOptions]="{ exact: true }">
-                
-                <!-- Enlace visible principal (para available) -->
                 <a class="nav-link text-reset" routerLink="/missions" [queryParams]="{ status: 'available' }">
                     Misiones
                 </a>
-
-                <!-- Enlace oculto de apoyo (para que detecte cuando estás en completed) -->
                 <a class="d-none" routerLink="/missions" [queryParams]="{ status: 'completed' }"></a>
-
             </div>
         </li>
         <li class="nav-item">
@@ -52,13 +47,15 @@
             </a>
         </li>
     </ul>
+  </div>
 
-    <!-- Widget Inferior Sidebar (Misión Diaria) -->
-    <div class="card bg-warning-subtle border-0 p-3 rounded-4" style="background-color: #b95d32 !important; color: white;">
-        <small class="fw-bold">Misión del día</small>
-        <p class="small mb-2">¡Planta 5 árboles virtuales hoy!</p>
-        <button class="btn btn-light btn-sm text-dark fw-bold rounded-pill">
-            Comenzar misión
-        </button>
-    </div>
-</div>
+  <!-- Widget Inferior Sidebar (Misión Diaria) -->
+  <div class="card border-0 p-3 rounded-4 mt-auto" style="background-color: #b95d32 !important; color: white;">
+      <small class="fw-bold">Misión del día</small>
+      <p class="small mb-2">¡Planta 5 árboles virtuales hoy!</p>
+      <button class="btn btn-light btn-sm text-dark fw-bold rounded-pill">
+          Comenzar misión
+      </button>
+  </div>
+
+</nav>
