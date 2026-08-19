@@ -4,11 +4,12 @@ import { filter } from 'rxjs/operators';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { SidebarComponent } from '../../shared/sidebar/sidebar.component';
 import { ProfileService } from '../../services/profile.service';
+import { MobileMenuComponent } from '../../shared/mobile-menu/mobile-menu.component';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
-  imports: [RouterOutlet,SidebarComponent, HeaderComponent],
+  imports: [RouterOutlet, SidebarComponent, HeaderComponent, MobileMenuComponent],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'
 })

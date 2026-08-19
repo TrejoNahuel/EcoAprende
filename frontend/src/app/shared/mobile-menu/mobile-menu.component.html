@@ -1,0 +1,43 @@
+<nav class="d-md-none fixed-bottom bg-light border-top d-flex justify-content-around align-items-center gap-2 py-2 px-1">
+    <a routerLink="/home-student" class="nav-link text-dark d-flex flex-column justify-content-center align-items-center gap-1 text-center py-3 py-sm-2 p-2 rounded-3" routerLinkActive="bg-success text-white">
+        <svg width="16" height="16" fill="currentColor" viewBox="1 1 14 14">
+            <path fill-rule="evenodd" d="M8 1.5L1.2 7.4a.6.6 0 0 0 .8.9L2 8.2V14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8.2l-.0.1a.6.6 0 0 0 .8-.9L8 1.5ZM6.55 15v-4.6h2.9V15H6.55Z"/>
+        </svg>
+        <span class="small d-none d-sm-inline">Inicio</span>
+    </a>
+
+    <a routerLink="/dashboard" class="nav-link text-dark d-flex flex-column justify-content-center align-items-center gap-1 text-center py-3 py-sm-2 p-2 rounded-3" routerLinkActive="bg-success text-white">
+        <svg width="16" height="16" fill="currentColor" viewBox="1.5 1.5 13 13">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 0-6 0 3 3 0 0 0 6 0"/>
+        </svg>
+        <span class="small d-none d-sm-inline">Panel</span>
+    </a>
+
+    <a routerLink="/modules" class="nav-link text-dark d-flex flex-column justify-content-center align-items-center gap-1 text-center py-3 py-sm-2 p-2 rounded-3" routerLinkActive="bg-success text-white">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 512 512">
+            <path d="M426.667,0h-256v384h298.667V42.667C469.333,19.103,450.231,0,426.667,0z"/>
+            <path d="M106.667,0c-35.346,0-64,28.654-64,64v336.32c11.715-10.528,26.916-16.342,42.667-16.32H128V0H106.667z"/>
+            <path d="M469.333,512h-384c-23.564,0-42.667-19.102-42.667-42.667l0,0c0-23.564,19.103-42.667,42.667-42.667h384V512z"/>
+        </svg>
+        <span class="small d-none d-sm-inline">Módulos</span>
+    </a>
+
+    <div 
+        routerLinkActive="active bg-success text-white rounded-3" 
+        [routerLinkActiveOptions]="{ exact: true }"
+    >
+        <a 
+            routerLink="/missions" 
+            [queryParams]="{ status: 'available' }"
+            class="nav-link text-dark d-flex flex-column justify-content-center align-items-center gap-1 text-center text-reset py-3 py-sm-2 p-2 rounded-3">
+            
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v1.035l1.883 2.285a.5.5 0 0 1-.384.81H4.354a.5.5 0 0 1-.384-.832l1.883-2.263V10.94c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.082 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935"/>
+            </svg>
+
+            <span class="small d-none d-sm-inline">Misiones</span>
+        </a>
+
+        <a class="d-none" routerLink="/missions" [queryParams]="{ status: 'completed' }"></a>
+    </div>
+</nav>
