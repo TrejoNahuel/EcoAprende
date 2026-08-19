@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Instalador centralizado para el equipo xAcademy (Frontend y Backend)",
   "scripts": {
-    "instalar-todo": "npm install -g @angular/cli@18 @nestjs/cli@11 && npm install --prefix frontend && npm install --prefix backend"
+    "instalar-todo": "npm install -g @angular/cli@18 @nestjs/cli@11 && npm install --prefix frontend && npm install --prefix backend",
+    "dev": "docker compose -f docker-compose.dev.yml up",
+    "dev:build": "docker compose -f docker-compose.dev.yml up --build",
+    "dev:down": "docker compose -f docker-compose.dev.yml down",
+    "db:reset": "docker compose -f docker-compose.dev.yml exec backend npm run db:reset",
+    "db:seed": "docker compose -f docker-compose.dev.yml exec backend npm run db:seed"
   }
 }
