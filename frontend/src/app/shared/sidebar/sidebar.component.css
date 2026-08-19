@@ -1,0 +1,12 @@
+.nav-item {
+  transition: all 0.25s ease-in-out;
+  border-radius: 0.75rem;
+}
+
+.nav-item:hover {
+  background-color: var(--primary-color-bg-hover);
+}
+
+.nav-item:active {
+  transform: scale(0.97);
+}
