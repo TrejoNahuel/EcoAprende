@@ -127,10 +127,10 @@ export class MissionCardComponent {
           if (newBadge) {
             this.newBadgeMessage = 'Nueva insignia desbloqueada: ' + newBadge.name + '!';
             setTimeout(() => {
-              this.completed.emit(this.mission);
+              this.completedMission.emit(response);
             }, 2500);
           } else {
-            this.completed.emit(this.mission);
+            this.completedMission.emit(response);
           }
         });
       },
