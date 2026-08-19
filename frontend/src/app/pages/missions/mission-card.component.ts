@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CompleteMissionResponse, Mission, MissionService } from '../../services/mission.service';
 import { take } from 'rxjs/operators';
-import { Mission, MissionService } from '../../services/mission.service';
 import { ProfileService } from '../../services/profile.service';
 
 @Component({
@@ -75,7 +75,7 @@ import { ProfileService } from '../../services/profile.service';
 export class MissionCardComponent {
   @Input({ required: true }) mission!: Mission;
   @Input() status: 'available' | 'completed' = 'available';
-  @Output() completed = new EventEmitter<Mission>();
+  @Output() completedMission = new EventEmitter<CompleteMissionResponse>();
 
   isCompleting = false;
   justCompleted = false;
@@ -116,8 +116,9 @@ export class MissionCardComponent {
     });
 
     this.missionService.completeMission(this.mission.id).subscribe({
-      next: () => {
+      next: (response) => {
         this.isCompleting = false;
+        this.completedMission.emit(response);
         this.justCompleted = true;
 
         this.profileService.refresh().subscribe(([, badges]) => {

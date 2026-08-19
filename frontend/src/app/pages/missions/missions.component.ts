@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { AddMissionCardComponent } from './add-mission-card.component';
 import { MissionCardComponent } from './mission-card.component';
-import { MissionService, Mission } from '../../services/mission.service';
+import { MissionService, Mission, CompleteMissionResponse } from '../../services/mission.service';
 import { TargetProgressComponent } from '../student/target-progress/target-progress.component';
 
 type MissionStatus = 'available' | 'completed';
+type MissionCompletionResult = { message: string };
 
 @Component({
   imports: [AddMissionCardComponent, MissionCardComponent, NgClass, TargetProgressComponent],
@@ -17,6 +18,7 @@ type MissionStatus = 'available' | 'completed';
 export class MissionsComponent implements OnInit {
   availableMissions: Mission[] = [];
   completedMissions: Mission[] = [];
+  missionCompletionResult: MissionCompletionResult | null = null;
 
   constructor(
     private missionService: MissionService,
@@ -54,8 +56,25 @@ export class MissionsComponent implements OnInit {
     });
   }
 
-  onMissionCompleted(mission: Mission): void {
-    this.availableMissions = this.availableMissions.filter((m) => m.id !== mission.id);
-    this.completedMissions = [mission, ...this.completedMissions];
+  closeMissionCompletionModal(): void {
+    this.missionCompletionResult = null;
+  }
+
+  onMissionCompleted(response: CompleteMissionResponse): void {
+    const completedMissionId = response.missionId
+
+    const completedMission = this.availableMissions.find(
+      (mission) => mission.id === completedMissionId
+    );
+
+    if (completedMission) {
+      this.availableMissions = this.availableMissions.filter(
+        (mission) => mission.id !== completedMissionId
+      );
+
+      this.completedMissions = [completedMission, ...this.completedMissions];
+    }
+
+    this.missionCompletionResult = { message: `¡Ganaste ${response.points} puntos!` }
   }
 }
