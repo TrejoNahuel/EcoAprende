@@ -1,28 +1,266 @@
-<div class="container py-4">
-    <div class="mb-4">
-        <h2 class="fw-bold text-success">Hola, EcoExplorador!</h2>
+<div class="container-fluid p-4" style="min-height: 100vh;">
+  <div class="row g-4">
+
+    <!-- COLUMNA PRINCIPAL (IZQUIERDA / CENTRO) -->
+    <div class="col-lg-8 d-flex flex-column justify-content-between">
+      
+      <!-- SALUDO Y PUNTOS XP -->
+      <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h1 class="fw-bold fs-2 mb-1" style="color: #1a2e1d;">¡Hola, EcoExplorer!</h1>
+          <p class="text-muted mb-0">¡Tienes 3 misiones nuevas hoy para ayudar al planeta!</p>
+        </div>
+      </div>
+
+      <!-- SECCIÓN MIS MÓDULOS -->
+      <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h4 fw-bold mb-0" style="color: #1a2e1d;">Mis Módulos</h2>
+          @if (modules.length > 2) {
+            <a href="/modules" class="text-success fw-semibold text-decoration-none small d-flex align-items-center gap-1">
+              Ver todo <i class="bi bi-arrow-right"></i>
+            </a>
+          }
+        </div>
+
+        @if (modules.length === 0) {
+          <div class="alert alert-success bg-white border-success-subtle text-success-emphasis text-center py-4 rounded-4" role="alert">
+            <i class="bi bi-info-circle me-2"></i> No hay módulos disponibles en este momento.
+          </div>
+        } @else {
+          <div class="row row-cols-1 row-cols-md-2 g-3">
+            @for (module of modules | slice:0:2 ; track module.id) {
+              <div class="col">
+                <app-module-card [module]="module" />
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- SECCIÓN VITRINA DE INSIGNIAS -->
+      <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <h2 class="h4 fw-bold mb-0" style="color: #1a2e1d;">Vitrina de Insignias</h2>
+          </div>
+          <a href="/badges" class="text-success fw-semibold text-decoration-none small d-flex align-items-center gap-1">
+            Ver todas <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="row row-cols-2 row-cols-sm-4 g-3">
+          
+          <!-- Insignia 1: Desbloqueada -->
+          <div class="col">
+            <div class="card justify-content-between border-0 shadow-sm rounded-4 p-3 text-center bg-white h-100 position-relative overflow-hidden">
+              <h6 class="fw-bold mb-1 fs-6" style="color: #1a2e1d;">Plantador</h6>
+              <small class="text-muted d-block" style="font-size: 0.75rem;">1° Módulo completado</small>
+            </div>
+          </div>
+
+          <!-- Insignia 2: Desbloqueada -->
+          <div class="col">
+            <div class="card justify-content-between border-0 shadow-sm rounded-4 p-3 text-center bg-white h-100 position-relative overflow-hidden">
+              <h6 class="fw-bold mb-1 fs-6" style="color: #1a2e1d;">Guardián del Agua</h6>
+              <small class="text-muted d-block" style="font-size: 0.75rem;">3 Misiones de agua</small>
+            </div>
+          </div>
+
+          <!-- Insignia 3: Desbloqueada -->
+          <div class="col">
+            <div class="card justify-content-between border-0 shadow-sm rounded-4 p-3 text-center bg-white h-100 position-relative overflow-hidden">
+              <h6 class="fw-bold mb-1 fs-6" style="color: #1a2e1d;">Eco Reciclador</h6>
+              <small class="text-muted d-block" style="font-size: 0.75rem;">10 Residuos clasificados</small>
+            </div>
+          </div>
+
+          <!-- Insignia 4: Bloqueada (Opacidad reducida + Ícono de candado) -->
+          <div class="col">
+            <div class="card justify-content-between border-0 shadow-sm rounded-4 p-3 text-center bg-white h-100 position-relative overflow-hidden" style="opacity: 0.65;">
+              <h6 class="fw-bold mb-1 fs-6 text-secondary">Racha de 7 Días</h6>
+              <small class="text-muted d-block" style="font-size: 0.75rem;">Completa misiones diarias</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECCIÓN MISIONES ASIGNADAS -->
+      <div>
+        <h2 class="h4 fw-bold mb-3" style="color: #1a2e1d;">Misiones Pendientes</h2>
+        <div class="d-flex flex-column gap-3">
+          
+          <div class="card d-flex flex-row align-items-center justify-content-between border-0 border-start border-4 border-success shadow-sm rounded-4 p-3 ps-5 bg-white">
+              <div>
+                <h6 class="fw-bold mb-0" style="color: #1a2e1d;">Clasifica 10 residuos en casa</h6>
+                <small class="text-muted">Misión de Profe Ana • Expira en 2 días</small>
+              </div>
+              <div class="text-end">
+                <span class="fw-bold d-block mb-1" style="color: #b84c27;">+150 XP</span>
+                <button class="btn btn-sm btn-success rounded-pill px-3 fw-medium" style="background-color: #1b4d2e; border: none;">Completar</button>
+              </div>
+          </div>
+
+          <div class="card d-flex flex-row align-items-center justify-content-between border-0 border-start border-4 border-success shadow-sm rounded-4 p-3 ps-5 bg-white">
+            <div>
+                <h6 class="fw-bold mb-0" style="color: #1a2e1d;">Lee el artículo: "El Ciclo del Agua"</h6>
+                <small class="text-muted">Lectura obligatoria para el Quiz semanal</small>
+            </div>
+            <div class="text-end">
+              <span class="fw-bold d-block mb-1" style="color: #b84c27;">+50 XP</span>
+              <button class="btn btn-sm btn-success rounded-pill px-3 fw-medium" style="background-color: #1b4d2e; border: none;">Completar</button>
+            </div>
+          </div>
+
+          <div class="card d-flex flex-row align-items-center justify-content-between border-0 border-start border-4 border-success shadow-sm rounded-4 p-3 ps-5 bg-white">
+            <div>
+              <h6 class="fw-bold mb-0" style="color: #1a2e1d;">Propón una idea para reducir plástico</h6>
+              <small class="text-muted">Foro de discusión abierto</small>
+            </div>
+            <div class="text-end">
+              <span class="fw-bold d-block mb-1" style="color: #b84c27;">+200 XP</span>
+              <button class="btn btn-sm btn-success rounded-pill px-3 fw-medium" style="background-color: #1b4d2e; border: none;">Completar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
-    <h3 class="h4 mb-3 text-dark fw-semibold">Mis Módulos</h3>
+    <!-- COLUMNA DERECHA (WIDGETS DE PROGRESO Y LIGA) -->
+    <div class="col-lg-4 d-flex flex-column justify-content-between gap-4">
 
-    @if (modules.length === 0) {
-        <div class="alert alert-success bg-light border-success-subtle text-success-emphasis text-center py-4 rounded-4 mt-4" role="alert">
-            <i class="bi bi-info-circle me-2"></i> No hay módulos disponibles en este momento.
-        </div>
-    } @else {
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
-            @for (module of modules | slice:0:2 ; track module.id) {
-                <div class="col h-100">
-                    <app-module-card [module]="module" />
-                </div>
-            }
-        </div>
-        @if(modules.length > 2){
-            <div class="text-center mt-4">
-                <a href="/modules" style="color: black;">
-                    Ver más <i class="bi bi-arrow-right ms-1"></i>
-                </a>
+      <!-- PROGRESO SEMANAL CON GRÁFICO MOCKEADO -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+        <h5 class="fw-bold mb-3" style="color: #1a2e1d;">Progreso Semanal</h5>
+
+        <!-- GRÁFICO DE BARRAS HTML/CSS -->
+        <div class="d-flex align-items-end justify-content-between gap-2 pt-3 pb-2 px-1" style="height: 140px;">
+          
+          <!-- LUNES -->
+          <div class="d-flex flex-column align-items-center flex-grow-1 h-100 justify-content-end">
+            <div class="w-100 rounded-top" style="height: 40%; background-color: #d1e7dd;"></div>
+            <span class="small fw-semibold text-muted mt-2" style="font-size: 0.75rem;">L</span>
+          </div>
+
+          <!-- MARTES -->
+          <div class="d-flex flex-column align-items-center flex-grow-1 h-100 justify-content-end">
+            <div class="w-100 rounded-top" style="height: 65%; background-color: #d1e7dd;"></div>
+            <span class="small fw-semibold text-muted mt-2" style="font-size: 0.75rem;">M</span>
+          </div>
+
+          <!-- MIÉRCOLES (HOY - DESTACADO) -->
+          <div class="d-flex flex-column align-items-center flex-grow-1 h-100 justify-content-end">
+            <div class="w-100 rounded-top position-relative" style="height: 90%; background-color: #1b4d2e;">
+              <!-- Badge con el valor pico opcional -->
+              <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-warning text-dark" style="font-size: 0.6rem;">+250</span>
             </div>
-        }
-    }
+            <span class="small fw-bold text-success mt-2" style="font-size: 0.75rem;">M</span>
+          </div>
+
+          <!-- JUEVES -->
+          <div class="d-flex flex-column align-items-center flex-grow-1 h-100 justify-content-end">
+            <div class="w-100 rounded-top" style="height: 20%; background-color: #e9ecef;"></div>
+            <span class="small fw-semibold text-muted mt-2" style="font-size: 0.75rem;">J</span>
+          </div>
+
+          <!-- VIERNES -->
+          <div class="d-flex flex-column align-items-center flex-grow-1 h-100 justify-content-end">
+            <div class="w-100 rounded-top" style="height: 50%; background-color: #e9ecef;"></div>
+            <span class="small fw-semibold text-muted mt-2" style="font-size: 0.75rem;">V</span>
+          </div>
+
+          <!-- SÁBADO -->
+          <div class="d-flex flex-column align-items-center flex-grow-1 h-100 justify-content-end">
+            <div class="w-100 rounded-top" style="height: 15%; background-color: #e9ecef;"></div>
+            <span class="small fw-semibold text-muted mt-2" style="font-size: 0.75rem;">S</span>
+          </div>
+
+          <!-- DOMINGO -->
+          <div class="d-flex flex-column align-items-center flex-grow-1 h-100 justify-content-end">
+            <div class="w-100 rounded-top" style="height: 30%; background-color: #e9ecef;"></div>
+            <span class="small fw-semibold text-muted mt-2" style="font-size: 0.75rem;">D</span>
+          </div>
+
+        </div>
+
+        <!-- BANNER INFORMATIVO -->
+        <div class="py-3 px-4 rounded-3 d-flex flex-column gap-3 mt-3" style="background-color: #edf5ef;">
+          <strong class="d-block text-success small">¡Vas por buen camino!</strong>
+          <span class="text-muted" style="font-size: 0.75rem;">Has ganado 120 XP más que ayer.</span>
+        </div>
+      </div>
+
+      <!-- PRÓXIMO NIVEL -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+        <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom">
+          <h5 class="fw-bold mb-0" style="color: #1a2e1d;">Nivel</h5>
+          <div class="d-flex justify-content-center align-items-center bg-success text-white fw-bold rounded-circle" style="width: 35px; height: 35px;">
+            12
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <p class="fw-bold mb-0" style="color: #1a2e1d;">Próximo Nivel: 13</p>
+        </div>
+        <div class="d-flex justify-content-between text-muted small mb-2" style="font-size: 0.75rem;">
+          <span>XP necesaria</span>
+          <span class="fw-semibold">2,450 / 3,000</span>
+        </div>
+        <div class="progress mb-3" style="height: 8px;">
+          <div class="progress-bar rounded-pill" style="width: 80%; background-color: #b84c27;"></div>
+        </div>
+        <div class="py-3 px-4 rounded-3 d-flex flex-column gap-3 mt-3" style="background-color: #edf5ef;">
+          <strong class="d-block text-success small">Desbloqueas:</strong>
+          <span class="text-muted" style="font-size: 0.75rem;">Insignia "Guardián del Bosque"</span>
+          <span class="text-muted" style="font-size: 0.75rem;">Acceso a módulo: Eco-Innovación"</span>
+        </div>
+      </div>
+
+      <!-- LIGA DE CLASE -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="fw-bold mb-0" style="color: #1a2e1d;">Liga de Clase</h5>
+          <span class="badge px-2 py-1 fw-medium" style="background-color: #e6f4ea; color: #1e7e34;">4° Puesto</span>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 p-2 bg-transparent">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-bold text-muted me-2" style="width: 12px;">1</span>
+              <img src="https://i.pravatar.cc/150?img=1" class="rounded-circle" width="28" height="28" alt="Mateo R.">
+              <span class="small fw-semibold">Mateo R.</span>
+            </div>
+            <span class="fw-bold small" style="color: #1e7e34;">3,120</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 p-2 bg-transparent">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-bold text-muted me-2" style="width: 12px;">2</span>
+              <img src="https://i.pravatar.cc/150?img=2" class="rounded-circle" width="28" height="28" alt="Sofia L.">
+              <span class="small fw-semibold">Sofia L.</span>
+            </div>
+            <span class="fw-bold small" style="color: #1e7e34;">2,980</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 p-2 bg-transparent">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-bold text-muted me-2" style="width: 12px;">3</span>
+              <img src="https://i.pravatar.cc/150?img=3" class="rounded-circle" width="28" height="28" alt="Lucas G.">
+              <span class="small fw-semibold">Lucas G.</span>
+            </div>
+            <span class="fw-bold small" style="color: #1e7e34;">2,650</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 p-2 my-1 rounded-3" style="background-color: #e6f4ea;">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fw-bold me-2" style="color: #1e7e34; width: 12px;">4</span>
+              <img src="https://i.pravatar.cc/150?img=5" class="rounded-circle" width="28" height="28" alt="Tú">
+              <span class="fw-bold small" style="color: #1e7e34;">Vos</span>
+            </div>
+            <span class="fw-bold small" style="color: #1e7e34;">2,450</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
 </div>
