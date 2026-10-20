@@ -10,6 +10,7 @@ import { ModulesModule } from './modules/modules.module';
 import { LevelModule } from './levels/level.module';
 import { MissionsModule } from './missions/missions.module';
 import { PointsModule } from './points/points.module';
+import { config as databaseConfig } from './database/config';
 
 @Module({
   imports: [
@@ -17,12 +18,7 @@ import { PointsModule } from './points/points.module';
       isGlobal: true,
     }),
     SequelizeModule.forRoot({
-      dialect: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT!, 10),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
+      ...databaseConfig.development,
       autoLoadModels: true,
       synchronize: true,
       // sync: { force: true },
