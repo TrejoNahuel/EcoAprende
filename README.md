@@ -24,7 +24,9 @@ Los requisitos dependen de qué opción vayas a usar para levantar el proyecto (
 
 ## 2. Instalación de dependencias (El "Comando Mágico")
 
-> Este paso solo es necesario si vas a trabajar con la **Opción A**, o si querés tener los `node_modules` instalados localmente para que tu editor te dé autocompletado y linting. Si vas a usar **Docker** de forma exclusiva, podés saltear este paso: las dependencias se instalan solas dentro de las imágenes cuando se construyen los contenedores.
+Este paso solo es necesario si vas a trabajar con la **Opción A**, o si querés tener los ```node_modules``` instalados localmente para que tu editor te dé autocompletado y linting.
+
+Si vas a usar **Docker** de forma exclusiva, podés saltear este paso: las dependencias se instalan solas dentro de las imágenes cuando se construyen los contenedores.
 
 **No intenten instalar las carpetas una por una ni usar comandos de otros lenguajes.** Hemos creado un archivo `package.json` global en la raíz del proyecto que hace todo por ustedes.
 
@@ -66,7 +68,27 @@ cp .env.template .env
 
 *(En Windows pueden copiar el archivo manualmente y renombrarlo a `.env`.)*
 
-> ⚠️ **Importante:** las variables de conexión a la base (`DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASS`, `DB_NAME`) y las de JWT (`JWT_SECRET`, `JWT_EXPIRATION`) ya **no tienen valores por defecto** en el código. Si falta alguna en tu `.env`, el backend no va a poder arrancar.
+
+### Variables de entorno necesarias
+
+El archivo ```backend/.env``` debe contener las siguientes variables:
+
+```dotenv
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=tu_usuario
+DB_PASS=tu_contraseña
+DB_NAME=ecoaprende
+JWT_SECRET=tu_secreto_jwt
+JWT_EXPIRATION=3600
+```
+
+**Importante:**
+
+- El proyecto está migrando actualmente de **MySQL a PostgreSQL**.
+- La configuración de base de datos debe utilizar PostgreSQL, cuyo puerto predeterminado es ```5432```.
+- Verificá que los valores de conexión coincidan con tu instalación local de PostgreSQL.
+- Reemplazá ```tu_usuario```, ```tu_contraseña``` y ```tu_secreto_jwt``` por los valores correspondientes a tu entorno.
 
 > 🐳 **Si vas a usar Docker (Opción B), no hace falta crear este archivo.** `docker-compose.dev.yml` ya define esas mismas variables directamente como entorno del contenedor, y el `.dockerignore` del backend excluye el `.env` a propósito, para que nunca termine copiado dentro de la imagen.
 
