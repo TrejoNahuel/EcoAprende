@@ -200,7 +200,18 @@ Una vez arriba, los servicios quedan disponibles en:
 
 ---
 
-## 5. Reglamento de Git (Feature Branch Workflow)
+## 5. Formato del código
+
+Utilizamos **Prettier** en el frontend y el backend para mantener un formato consistente, con indentación de 2 espacios y punto y coma al final de las sentencias. La configuración se encuentra en los archivos `.prettierrc` y `.prettierignore` de cada proyecto.
+
+En las carpetas `frontend` y `backend` están disponibles los siguientes comandos:
+
+- `npm run format:check`: verifica el formato del código sin modificar los archivos.
+- `npm run format:fix`: aplica automáticamente el formato configurado.
+
+---
+
+## 6. Reglamento de Git (Feature Branch Workflow)
 
 Para mantener el código limpio y no pisarnos el trabajo, seguiremos este flujo.
 
